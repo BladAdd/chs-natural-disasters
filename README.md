@@ -2,6 +2,12 @@
 
 Интерактивная веб-презентация по теме **«Чрезвычайные ситуации природного характера»** для школьного урока ОБЗР (9–11 класс).
 
+## 🔗 Ссылки
+
+- **Vercel:** https://chs-natural-disasters.vercel.app
+- **GitHub Pages:** https://bladadd.github.io/chs-natural-disasters/
+- **Репозиторий:** https://github.com/BladAdd/chs-natural-disasters
+
 ## Что внутри
 
 - **19 слайдов** с полноценной анимацией
