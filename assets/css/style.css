@@ -755,6 +755,25 @@ td { color: var(--text-dim); }
   color: transparent;
   opacity: .55;
 }
+/* название части вместо номера слайда */
+.section-num.part-label {
+  font-size: clamp(15px, 1.45vw, 24px);
+  letter-spacing: .18em;
+  line-height: 1.1;
+  padding: 10px 16px;
+  border-radius: 14px;
+  border: 1px solid var(--stroke);
+  background: rgba(255, 255, 255, .05);
+  color: var(--text-mute);
+  -webkit-text-fill-color: var(--text-mute);
+  background-clip: border-box;
+  -webkit-background-clip: border-box;
+  text-shadow: none;
+  white-space: nowrap;
+  opacity: 1;
+  align-self: flex-start;
+  max-width: 42%;
+}
 .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 13px; }
 .danger-strip {
   display: grid;

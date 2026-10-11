@@ -1194,7 +1194,7 @@ class GlobeApp {
     document.addEventListener('keydown', e => {
       const slide = document.querySelector('.globe-slide');
       if (!slide || !slide.classList.contains('is-active')) return;
-      if (e.target.matches('input, select, textarea')) return;
+      if ((e.target && e.target.matches && e.target.matches('input, select, textarea'))) return;
       const k = e.key;
       if (k === ' ' || k === 'Enter') {
         e.preventDefault();
