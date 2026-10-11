@@ -8,7 +8,7 @@ const ok = (c, m) => { console.log((c ? '✓ ' : '✗ ') + m); if (!c) fail++; }
 
 // 1. Слайды
 const slides = [...html.matchAll(/<section class="slide[^"]*"[^>]*data-title="([^"]+)"/g)].map(m => m[1]);
-ok(slides.length === 25, 'слайдов ровно 25 (найдено ' + slides.length + ')');
+ok(slides.length === 24, 'слайдов ровно 24 (найдено ' + slides.length + ')');
 ok(new Set(slides).size === slides.length, 'у всех слайдов уникальные заголовки');
 
 // 2. Автор
