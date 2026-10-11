@@ -6,7 +6,7 @@ const path = require('path');
 
 const root = path.resolve(__dirname, '..');
 const out = path.join(root, 'dist');
-const items = ['index.html', 'assets', 'package.json', 'README.md'];
+const items = ['index.html', 'assets', 'README.md'];
 
 fs.rmSync(out, { recursive: true, force: true });
 
