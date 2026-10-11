@@ -1,0 +1,14 @@
+{
+  "name": "chs-natural-disasters",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Интерактивная презентация «ЧС природного характера» для урока ОБЗР",
+  "scripts": {
+    "dev": "node scripts/serve.js",
+    "build": "node scripts/build.js",
+    "preview": "node scripts/serve.js dist",
+    "deploy": "vercel --prod"
+  },
+  "keywords": ["обзр", "чс", "природные-катастрофы", "презентация", "школа"],
+  "license": "MIT"
+}
