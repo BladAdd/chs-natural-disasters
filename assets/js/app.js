@@ -154,21 +154,9 @@
     }
   }, { passive: true });
 
-  /* Колесо мыши с задержкой (чтобы не «проскакивать» слайды) */
-  var wheelLock = false;
-  document.addEventListener('wheel', function (e) {
-    var inner = slides[idx].querySelector('.slide-inner');
-    if (inner && inner.scrollHeight > inner.clientHeight + 4) {
-      var atTop = inner.scrollTop <= 1;
-      var atBottom = inner.scrollTop + inner.clientHeight >= inner.scrollHeight - 2;
-      if (!(e.deltaY > 0 && atBottom) && !(e.deltaY < 0 && atTop)) return; // скроллим внутри слайда
-    }
-    if (wheelLock) return;
-    if (Math.abs(e.deltaY) < 24) return;
-    wheelLock = true;
-    setTimeout(function () { wheelLock = false; }, 720);
-    e.deltaY > 0 ? next() : prev();
-  }, { passive: true });
+  /* Прокрутка колесом мыши НЕ переключает слайды.
+     Колесо просто прокручивает содержимое слайда, если оно не помещается.
+     Слайды листаются стрелками, пробелом, кнопками или свайпом. */
 
   /* Прячем подсказку после первого действия */
   var hideHint = function () {
