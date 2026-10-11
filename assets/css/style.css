@@ -190,20 +190,20 @@ h1.title {
   letter-spacing: -.03em;
 }
 h2.slide-title {
-  font-size: clamp(27px, 3.1vw, 45px);
+  font-size: clamp(24px, 2.7vw, 38px);
   font-weight: 900;
   letter-spacing: -.022em;
   line-height: 1.1;
-  margin: 16px 0 10px;
+  margin: 10px 0 8px;
 }
 h3 {
   font-size: clamp(16px, 1.35vw, 20px);
   font-weight: 800;
   letter-spacing: -.01em;
 }
-p { color: var(--text-dim); font-size: clamp(14px, 1.05vw, 16.5px); }
-.lead { font-size: clamp(15px, 1.2vw, 19px); color: #cfd9f0; max-width: 62ch; }
-.small { font-size: 13px; color: var(--text-mute); }
+p { color: var(--text-dim); font-size: clamp(13px, .92vw, 15px); }
+.lead { font-size: clamp(13.5px, 1.02vw, 17px); color: #cfd9f0; max-width: 64ch; }
+.small { font-size: 12.2px; color: var(--text-mute); }
 
 .grad-text {
   background: var(--grad-main);
@@ -226,7 +226,7 @@ p { color: var(--text-dim); font-size: clamp(14px, 1.05vw, 16.5px); }
   background: linear-gradient(160deg, rgba(22,30,52,.62), rgba(12,17,32,.58));
   border: 1px solid var(--stroke);
   border-radius: var(--radius);
-  padding: 20px 22px;
+  padding: 15px 17px;
   box-shadow: var(--shadow);
   overflow: hidden;
   transition: transform .35s var(--ease), border-color .35s var(--ease), box-shadow .35s var(--ease);
@@ -256,14 +256,14 @@ p { color: var(--text-dim); font-size: clamp(14px, 1.05vw, 16.5px); }
 }
 .card:hover .glow-line { transform: scaleX(1); }
 
-.grid { display: grid; gap: 18px; }
+.grid { display: grid; gap: 13px; }
 .g2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .g3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .g4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-.split { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 30px; align-items: center; }
-.split.wide-text { grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); }
+.split { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); gap: 22px; align-items: start; }
+.split.wide-text { grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); align-items: start; }
 
-.stack { display: flex; flex-direction: column; gap: 14px; }
+.stack { display: flex; flex-direction: column; gap: 10px; }
 .row { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
 
 .chip {
@@ -293,12 +293,12 @@ p { color: var(--text-dim); font-size: clamp(14px, 1.05vw, 16.5px); }
 .risk-3 { background: rgba(248,113,113,.16); color: #f87171; border: 1px solid rgba(248,113,113,.35); }
 .risk-4 { background: rgba(251,113,133,.2);  color: var(--rose); border: 1px solid rgba(251,113,133,.45); }
 
-ul.list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+ul.list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
 ul.list li {
   position: relative;
   padding-left: 30px;
   color: var(--text-dim);
-  font-size: clamp(13.5px, 1.02vw, 15.5px);
+  font-size: clamp(12.6px, .93vw, 14.6px);
 }
 ul.list li::before {
   content: '';
@@ -338,10 +338,10 @@ ul.list.warn li::before {
   background: linear-gradient(160deg, rgba(24,33,58,.66), rgba(13,19,36,.6));
   border: 1px solid var(--stroke);
   border-radius: var(--radius-sm);
-  padding: 16px 18px;
+  padding: 11px 13px;
 }
 .stat .num {
-  font-size: clamp(24px, 2.6vw, 38px);
+  font-size: clamp(20px, 2.15vw, 31px);
   font-weight: 900;
   letter-spacing: -.03em;
   line-height: 1.05;
@@ -677,7 +677,7 @@ body.user-active .hint { opacity: 0; }
   background: linear-gradient(180deg, var(--cyan), var(--violet), var(--rose));
   border-radius: 2px;
 }
-.tl-item { position: relative; padding: 0 0 18px 4px; }
+.tl-item { position: relative; padding: 0 0 13px 4px; }
 .tl-item::before {
   content: '';
   position: absolute;
@@ -774,11 +774,22 @@ td { color: var(--text-dim); }
   align-self: flex-start;
   max-width: 42%;
 }
-.kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 13px; }
+.kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
 .danger-strip {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
+  gap: 8px;
+}
+/* Полоса ровно из пяти одинаковых плиток — без «хвоста» в одну карточку */
+.danger-strip.five {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+.danger-strip.five > .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  padding: 10px 11px;
 }
 .icon-box {
   width: 44px; height: 44px;
@@ -822,6 +833,7 @@ td { color: var(--text-dim); }
   position: relative;
   display: block;
   margin: 0;
+  max-height: 62vh;
   overflow: hidden;
   border-radius: var(--radius);
   border: 1px solid var(--stroke);
@@ -865,7 +877,7 @@ td { color: var(--text-dim); }
   position: absolute;
   left: 0; right: 0; bottom: 0;
   z-index: 4;
-  padding: 34px 16px 12px;
+  padding: 26px 14px 10px;
   background: linear-gradient(0deg, rgba(4, 6, 13, .94) 12%, rgba(4, 6, 13, .55) 52%, transparent);
   font-size: 13px;
   font-weight: 700;
@@ -1457,6 +1469,49 @@ option { background: #0b1120; }
   .gb-stats { grid-template-columns: repeat(2, 1fr); }
   .win-row { grid-template-columns: repeat(4, 1fr); }
 }
+
+/* ---------- 15.5. Компактный режим для плотных слайдов ---------- */
+/* Ставится автоматически: если содержимое не помещается на экран,
+   слайд получает класс dense и всё в нём становится компактнее.
+   Так текст остаётся читаемым, а прокрутка исчезает. */
+.slide.dense .photo { max-height: 30vh; }
+.slide.dense .card { padding: 12px 14px; border-radius: 15px; }
+.slide.dense .card .card-head { margin-bottom: 7px; }
+.slide.dense .card .icon-box { width: 36px; height: 36px; font-size: 17px; border-radius: 10px; }
+.slide.dense .lead { font-size: clamp(13px, .95vw, 15.5px); }
+.slide.dense p { font-size: clamp(12.5px, .87vw, 14px); }
+.slide.dense .small { font-size: 11.7px; }
+.slide.dense .stack { gap: 8px; }
+.slide.dense .grid { gap: 10px; }
+.slide.dense .kpi-row { gap: 8px; }
+.slide.dense .stat { padding: 9px 11px; }
+.slide.dense .stat .num { font-size: clamp(18px, 1.85vw, 26px); }
+.slide.dense ul.list { gap: 5px; }
+.slide.dense .danger-strip { gap: 7px; }
+.slide.dense .tl-item { padding-bottom: 10px; }
+.slide.dense th, .slide.dense td { padding: 7px 11px; }
+.slide.dense .scale-row { margin: 9px 0 4px; }
+.slide.dense .scale-cell { padding: 7px 6px; }
+.slide.dense .photo figcaption { padding: 22px 12px 8px; font-size: 12px; }
+.slide.dense .fact-grid { gap: 9px; }
+.slide.dense .fact { padding: 11px 13px; }
+.slide.dense .section-head { margin-bottom: 2px; }
+
+@media (max-height: 820px) {
+  .slide.dense .photo { max-height: 26vh; }
+}
+
+/* Сверхкомпактный режим — для самых насыщенных слайдов */
+.slide.dense.tight .photo { max-height: 23vh; }
+.slide.dense.tight .card { padding: 10px 12px; }
+.slide.dense.tight .lead { font-size: clamp(12.5px, .88vw, 14.5px); }
+.slide.dense.tight p { font-size: clamp(12px, .82vw, 13.5px); }
+.slide.dense.tight .small { font-size: 11.2px; }
+.slide.dense.tight .stat { padding: 8px 10px; }
+.slide.dense.tight .stat .num { font-size: clamp(17px, 1.65vw, 23px); }
+.slide.dense.tight .stack { gap: 7px; }
+.slide.dense.tight ul.list { gap: 4px; }
+.slide.dense.tight .card { line-height: 1.45; }
 
 /* ---------- 16. Reveal-on-enter ---------- */
 .rv { opacity: 0; transform: translateY(22px); }

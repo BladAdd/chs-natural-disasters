@@ -81,6 +81,21 @@
   function next() { if (idx < TOTAL - 1) go(idx + 1); }
   function prev() { if (idx > 0) go(idx - 1); }
 
+  /* Если содержимое чуть выше экрана — мягко ужимаем слайд.
+     Меньше 88% не масштабируем: лучше небольшая прокрутка, чем нечитаемый текст. */
+  function fitSlide(slide) {
+    if (!slide || slide.classList.contains('globe-slide')) return;
+    var inner = slide.querySelector('.slide-inner');
+    if (!inner) return;
+    inner.style.transform = '';
+    inner.style.transformOrigin = 'top center';
+    var avail = inner.clientHeight;
+    var need = inner.scrollHeight;
+    if (!avail || need <= avail + 2) return;
+    var k = Math.max(0.88, avail / need);
+    inner.style.transform = 'scale(' + k.toFixed(4) + ')';
+  }
+
   function paint() {
     progress.style.width = (TOTAL > 1 ? (idx / (TOTAL - 1)) * 100 : 100) + '%';
     curNum.textContent = idx + 1;
@@ -92,6 +107,7 @@
       d.style.opacity = Math.abs(i - idx) <= 2 ? '1' : '.35';
     });
     ovItems.forEach(function (o, i) { o.classList.toggle('is-current', i === idx); });
+    fitSlide(slides[idx]);
   }
 
   /* ---------- 4. Управление ---------- */
@@ -418,6 +434,7 @@
   /* ---------- 7. Старт ---------- */
   slides[0].classList.add('is-active');
   paint();
+  window.addEventListener('resize', function () { fitSlide(slides[idx]); });
 
   /* Предупреждаем о полноэкранном режиме по первому клику в пустое место */
   document.addEventListener('click', function () {
