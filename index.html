@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ЧС природного характера — презентация для урока ОБЗР</title>
-<meta name="description" content="Интерактивная презентация по теме «Чрезвычайные ситуации природного характера» для урока ОБЗР: землетрясения, цунами, торнадо, ураганы, вулканы, наводнения, оползни, лесные пожары, правила защиты.">
+<meta name="description" content="Интерактивная презентация по теме «Чрезвычайные ситуации природного характера» для урока ОБЗР: землетрясения, цунами, торнадо, ураганы, вулканы, наводнения, оползни, пожары, а также природные ЧС в России и Оренбургской области.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%94%A5%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,7 +35,7 @@
     <div>ЧС природного характера<small>Основы безопасности жизнедеятельности</small></div>
   </div>
   <div class="spacer"></div>
-  <span class="chip hide-sm">Урок ОБЗР <b>· 10 класс</b></span>
+  <span class="chip hide-sm">Урок ОБЗР <b>· 9–11 класс</b></span>
   <button class="nav-btn hide-sm" id="btnOverview" title="Обзор слайдов (O)">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
     <span class="lbl">Обзор</span>
@@ -46,19 +46,26 @@
   <button class="nav-btn" id="btnPrev" title="Назад (←)">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18 9 12l6-6"/></svg><span class="lbl">Назад</span>
   </button>
-  <div class="counter"><b id="curNum">1</b> / <span id="totNum">19</span></div>
+  <div class="counter"><b id="curNum">1</b> / <span id="totNum">24</span></div>
   <button class="nav-btn primary" id="btnNext" title="Вперёд (→ или Пробел)">
     <span class="lbl">Далее</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
   </button>
 </nav>
 <div class="dots" id="dots" aria-label="Быстрый переход"></div>
-<div class="hint" id="hint"><kbd>→</kbd> / <kbd>Space</kbd> листать · <kbd>O</kbd> обзор · <kbd>F</kbd> во весь экран</div>
+<div class="hint" id="hint"><kbd>→</kbd> / <kbd>Space</kbd> листать · <kbd>O</kbd> обзор · <kbd>F</kbd> во весь экран · клик по фото — увеличить</div>
 
 <!-- ======================= OVERVIEW ======================= -->
 <div class="overview" id="overview">
   <h2>Все слайды</h2>
   <p class="small">Нажми на карточку, чтобы перейти. Esc — закрыть</p>
   <div class="ov-grid" id="ovGrid"></div>
+</div>
+
+<!-- ======================= LIGHTBOX ======================= -->
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lbClose" aria-label="Закрыть">✕</button>
+  <img src="" alt="" id="lbImg">
+  <div class="lb-cap" id="lbCap"></div>
 </div>
 
 <!-- ======================= DECK ======================= -->
@@ -79,121 +86,43 @@
           <p class="lead" style="margin-top:18px">
             Стихийные бедствия не спрашивают разрешения. Разбираемся, что это такое, как они
             возникают, чем грозят и — главное — <span class="hl">как действовать, чтобы выжить</span>.
+            Отдельный блок — <span class="hl g">наша страна и Оренбургская область</span>.
           </p>
           <div class="hero-tags">
-            <span class="chip">🌍 8 видов разбираем</span>
+            <span class="chip">🌍 9 видов разбираем</span>
+            <span class="chip">🇷🇺 Россия и Оренбуржье</span>
             <span class="chip">🛡️ Правила защиты</span>
             <span class="chip">🧠 Мини-тест</span>
-            <span class="chip">⏱ ~20 минут</span>
           </div>
           <div class="title-meta">
             <div><span class="k">Дисциплина</span><span class="v">ОБЗР</span></div>
             <div><span class="k">Класс</span><span class="v">9–11</span></div>
-            <div><span class="k">Тема</span><span class="v">Природные ЧС</span></div>
+            <div><span class="k">Слайдов</span><span class="v">24</span></div>
             <div><span class="k">Управление</span><span class="v">→ Space · F · O</span></div>
           </div>
         </div>
 
-        <!-- HERO COLLAGE SCENE -->
-        <div class="scene-wrap">
-          <svg class="scene" viewBox="0 0 640 440" role="img" aria-label="Коллаж стихийных бедствий: вулкан, торнадо, землетрясение и шторм">
-            <defs>
-              <linearGradient id="hSky" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#0b1430"/><stop offset=".55" stop-color="#1a1b45"/><stop offset="1" stop-color="#3b1f4d"/>
-              </linearGradient>
-              <linearGradient id="hGround" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#1b1140"/><stop offset="1" stop-color="#070512"/>
-              </linearGradient>
-              <linearGradient id="hLava" x1="0" y1="1" x2="0" y2="0">
-                <stop offset="0" stop-color="#ff3d3d"/><stop offset=".5" stop-color="#ff9f1c"/><stop offset="1" stop-color="#ffe066"/>
-              </linearGradient>
-              <linearGradient id="hFunnel" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0" stop-color="#7dd3fc" stop-opacity=".05"/><stop offset=".5" stop-color="#a5b4fc" stop-opacity=".75"/><stop offset="1" stop-color="#7dd3fc" stop-opacity=".05"/>
-              </linearGradient>
-              <radialGradient id="hSun" cx=".5" cy=".5" r=".5">
-                <stop offset="0" stop-color="#ffe9a8"/><stop offset="1" stop-color="#fb923c" stop-opacity="0"/>
-              </radialGradient>
-              <linearGradient id="hCloud" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#94a3b8"/><stop offset="1" stop-color="#334155"/>
-              </linearGradient>
-            </defs>
-
-            <rect width="640" height="440" fill="url(#hSky)"/>
-            <circle cx="500" cy="80" r="90" fill="url(#hSun)" opacity=".7"/>
-            <circle cx="500" cy="80" r="30" fill="#ffd88a" opacity=".85"/>
-
-            <!-- stars -->
-            <g fill="#fff" opacity=".55">
-              <circle cx="60" cy="40" r="1.6"/><circle cx="130" cy="90" r="1.1"/><circle cx="200" cy="35" r="1.4"/>
-              <circle cx="290" cy="70" r="1"/><circle cx="380" cy="30" r="1.7"/><circle cx="600" cy="120" r="1.2"/>
-              <circle cx="90" cy="150" r="1"/><circle cx="600" cy="45" r="1.4"/>
-            </g>
-
-            <!-- distant storm clouds -->
-            <g opacity=".9" class="sky-a">
-              <g fill="url(#hCloud)" transform="translate(300,60)">
-                <ellipse cx="60" cy="20" rx="70" ry="24"/><ellipse cx="120" cy="14" rx="52" ry="19"/><ellipse cx="20" cy="26" rx="44" ry="17"/>
-              </g>
-              <g stroke="#7dd3fc" stroke-width="2" opacity=".5" stroke-linecap="round" class="rain-drop" style="animation-duration:1.6s">
-                <line x1="330" y1="86" x2="326" y2="100"/><line x1="360" y1="90" x2="356" y2="104"/>
-                <line x1="390" y1="86" x2="386" y2="100"/><line x1="345" y1="96" x2="341" y2="110"/>
-              </g>
-              <g stroke="#fde68a" stroke-width="2.5" opacity="0" class="lightning-flash" fill="none" stroke-linejoin="round">
-                <path d="M356 84 l-9 16 h8 l-11 18"/>
-              </g>
-            </g>
-
-            <!-- volcano -->
-            <g>
-              <path d="M-20 400 L170 150 L250 150 L330 400 Z" fill="#241a3d"/>
-              <path d="M170 150 L250 150 L236 120 L184 120 Z" fill="#3a2a55"/>
-              <path d="M196 152 q22 60 44 118 l-30 0 q-26 -60 -46 -118 Z" fill="url(#hLava)" class="lava-flow"/>
-              <ellipse cx="210" cy="122" rx="46" ry="16" fill="#ffd166" opacity=".28"/>
-              <g class="smoke-puff" fill="#6b5a8a" opacity=".5"><ellipse cx="206" cy="104" rx="42" ry="18"/></g>
-              <g class="smoke-puff" style="animation-delay:1.4s" fill="#7c6aa0" opacity=".42"><ellipse cx="216" cy="96" rx="56" ry="22"/></g>
-              <g class="smoke-puff" style="animation-delay:2.6s" fill="#8b7bb3" opacity=".34"><ellipse cx="198" cy="88" rx="70" ry="26"/></g>
-              <g fill="#ffb347" class="ember" style="--dx:26px; animation-delay:.2s"><circle cx="210" cy="118" r="3.2"/></g>
-              <g fill="#ff7043" class="ember" style="--dx:-34px; animation-delay:1.1s"><circle cx="205" cy="118" r="2.4"/></g>
-              <g fill="#ffd166" class="ember" style="--dx:16px; animation-delay:2s"><circle cx="214" cy="118" r="2"/></g>
-            </g>
-
-            <!-- ground -->
-            <path d="M0 398 h640 v42 H0 Z" fill="url(#hGround)"/>
-
-            <!-- tornado -->
-            <g transform="translate(470,0)">
-              <path d="M46 78 L-30 330 q76 26 152 0 Z" fill="url(#hFunnel)"/>
-              <g class="funnel-spin" style="transform-origin:46px 80px">
-                <path d="M46 78 L10 330" stroke="#c7d2fe" stroke-width="3" opacity=".55" fill="none" stroke-linecap="round"/>
-                <path d="M46 78 L82 330" stroke="#c7d2fe" stroke-width="3" opacity=".55" fill="none" stroke-linecap="round"/>
-                <path d="M46 78 L46 330" stroke="#e0e7ff" stroke-width="2.4" opacity=".4" fill="none" stroke-linecap="round"/>
-              </g>
-              <ellipse cx="46" cy="336" rx="88" ry="16" fill="#c7d2fe" opacity=".22"/>
-              <ellipse cx="46" cy="330" rx="70" ry="13" fill="#e0e7ff" opacity=".16"/>
-              <g fill="#e2e8f0" opacity=".8">
-                <rect class="debris" x="150" y="250" width="7" height="7" rx="1" style="animation-delay:.4s"/>
-                <rect class="debris" x="-20" y="270" width="9" height="6" rx="1" style="animation-delay:1.3s"/>
-                <circle class="debris" cx="120" cy="200" r="4" style="animation-delay:2.1s"/>
-              </g>
-            </g>
-
-            <!-- earthquake crack + city -->
-            <g class="shake-hard" style="transform-origin:420px 380px">
-              <g fill="#1e2a4a">
-                <rect x="392" y="300" width="34" height="98" rx="3"/>
-                <rect x="430" y="322" width="26" height="76" rx="3"/>
-                <rect x="460" y="336" width="38" height="62" rx="3"/>
-                <rect x="502" y="352" width="24" height="46" rx="3"/>
-              </g>
-              <g fill="#ffd166" opacity=".55">
-                <rect x="398" y="310" width="6" height="8"/><rect x="412" y="310" width="6" height="8"/>
-                <rect x="398" y="326" width="6" height="8"/><rect x="467" y="346" width="6" height="8"/><rect x="481" y="346" width="6" height="8"/>
-                <rect x="438" y="332" width="6" height="8"/>
-              </g>
-              <path d="M330 400 L372 388 L404 402 L444 384 L486 400 L530 386" stroke="#fb7185" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-            </g>
-          </svg>
-          <div class="scene-cap">Стихийные бедствия: вулкан · торнадо · землетрясение · шторм</div>
+        <div class="collage">
+          <figure class="photo ar-11 c1 kb-in">
+            <img src="assets/img/tsunami.jpg" alt="Разрушения после цунами в Ридзенентакате, Япония" loading="eager">
+            <span class="fx fx-water"></span>
+            <figcaption><span class="cap-t">Цунами в Японии, 2011</span><span class="cap-a">US Navy · Public domain</span></figcaption>
+          </figure>
+          <figure class="photo c2 kb-lr">
+            <img src="assets/img/volcano.jpg" alt="Извержение вулкана Стромболи ночью" loading="lazy">
+            <span class="fx fx-heat"></span>
+            <figcaption><span class="cap-t">Извержение вулкана</span><span class="cap-a">W. Beyer · CC BY-SA 3.0</span></figcaption>
+          </figure>
+          <figure class="photo c3 kb-down">
+            <img src="assets/img/tornado.jpg" alt="Смерч над дорогой, 1965 год" loading="lazy">
+            <span class="fx fx-dust"></span>
+            <figcaption><span class="cap-t">Торнадо над дорогой</span><span class="cap-a">P. Huffman · Public domain</span></figcaption>
+          </figure>
+          <figure class="photo c4 kb-rl">
+            <img src="assets/img/wildfire.jpg" alt="Лесной пожар в Португалии" loading="lazy">
+            <span class="fx fx-smoke"></span>
+            <figcaption><span class="cap-t">Лесной пожар</span><span class="cap-a">anagh · CC BY-SA 3.0</span></figcaption>
+          </figure>
         </div>
       </div>
     </div>
@@ -259,36 +188,14 @@
       </div>
 
       <div class="stack">
-        <svg class="scene" viewBox="0 0 420 300" role="img" aria-label="Схема: стихийное бедствие превращается в чрезвычайную ситуацию">
-          <defs>
-            <linearGradient id="flow" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#fb7185"/>
-            </linearGradient>
-            <marker id="arw" markerWidth="9" markerHeight="9" refX="6" refY="4.5" orient="auto">
-              <path d="M0 0 L9 4.5 L0 9 z" fill="#22d3ee"/>
-            </marker>
-          </defs>
-          <rect width="420" height="300" fill="#070b18"/>
-          <g class="scan-line" opacity=".14"><rect x="0" y="0" width="420" height="2" fill="#22d3ee"/></g>
-
-          <g font-family="Manrope, sans-serif" text-anchor="middle">
-            <rect x="20" y="26" width="380" height="62" rx="14" fill="rgba(34,211,238,.1)" stroke="#22d3ee" stroke-width="1.4"/>
-            <text x="210" y="52" fill="#a5f3fc" font-size="15" font-weight="800">Стихийное бедствие</text>
-            <text x="210" y="73" fill="#64748b" font-size="11.5">процесс в природе: землетрясение, наводнение…</text>
-
-            <line x1="210" y1="90" x2="210" y2="112" stroke="url(#flow)" stroke-width="2.5" marker-end="url(#arw)"/>
-
-            <rect x="20" y="118" width="380" height="62" rx="14" fill="rgba(251,191,36,.1)" stroke="#fbbf24" stroke-width="1.4"/>
-            <text x="210" y="144" fill="#fde68a" font-size="15" font-weight="800">Воздействие на людей и объекты</text>
-            <text x="210" y="165" fill="#64748b" font-size="11.5">гибель людей, разрушения, потеря жилья</text>
-
-            <line x1="210" y1="182" x2="210" y2="204" stroke="url(#flow)" stroke-width="2.5" marker-end="url(#arw)"/>
-
-            <rect x="20" y="210" width="380" height="70" rx="14" fill="rgba(251,113,133,.12)" stroke="#fb7185" stroke-width="1.4"/>
-            <text x="210" y="238" fill="#fecdd3" font-size="16" font-weight="900">ЧРЕЗВЫЧАЙНАЯ СИТУАЦИЯ</text>
-            <text x="210" y="260" fill="#64748b" font-size="11.5">нужны силы и средства МЧС, спасателей, волонтёров</text>
-          </g>
-        </svg>
+        <figure class="photo ar-43 kb-up">
+          <img src="assets/img/rescue.jpg" alt="Спасатели МЧС России во время операции" loading="lazy">
+          <span class="fx fx-alert"></span>
+          <figcaption>
+            <span class="cap-t">Спасатели МЧС России на месте ЧС</span>
+            <span class="cap-a">В. Веленгурин · CC BY 4.0 · Wikimedia Commons</span>
+          </figcaption>
+        </figure>
 
         <div class="card rv" style="--d:.2s">
           <h3 style="margin-bottom:10px">Цепочка событий</h3>
@@ -360,23 +267,28 @@
       </div>
     </div>
 
-    <div class="card rv" style="--d:.34s; margin-top:18px">
-      <h3 style="margin-bottom:12px">Природные ЧС по типу воздействия делят ещё на две большие группы</h3>
-      <div class="grid g2">
-        <div>
-          <div class="row" style="margin-bottom:9px"><span class="badge-risk risk-4">геофизические и гидрологические</span></div>
-          <p class="small">Землетрясения, вулканы, цунами, наводнения, оползни, сели, лавины, а также <b>воздушные вибрации и удары</b>, способные разрушать здания.</p>
-        </div>
-        <div>
-          <div class="row" style="margin-bottom:9px"><span class="badge-risk risk-3">метеорологические и космические</span></div>
-          <p class="small">Ураганы, тайфуны, смерчи, торнадо, шквалы, град, наводнения от тайфунов, а также падение <b>метеоритов и осколков</b> космических аппаратов.</p>
-        </div>
+    <div class="grid g2" style="margin-top:18px; gap:18px">
+      <figure class="photo ar-219 kb-lr">
+        <img src="assets/img/hurricane.jpg" alt="Спутниковый снимок урагана Сэнди" loading="lazy">
+        <span class="fx fx-water"></span>
+        <figcaption><span class="cap-t">Ураган с орбиты: виден «глаз» и спираль</span><span class="cap-a">NASA Goddard · Public domain</span></figcaption>
+      </figure>
+      <div class="card">
+        <h3 style="margin-bottom:11px">Природные ЧС делят ещё на две группы</h3>
+        <p class="small" style="margin-bottom:12px">
+          <span class="badge-risk risk-4">геофизические и гидрологические</span><br>
+          Землетрясения, вулканы, цунами, наводнения, оползни, сели, лавины, воздушные вибрации.
+        </p>
+        <p class="small">
+          <span class="badge-risk risk-3">метеорологические и космические</span><br>
+          Ураганы, тайфуны, смерчи, торнадо, шквалы, град, наводнения от тайфунов, падение метеоритов.
+        </p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 4. СТАТИСТИКА / КАРТА ============ -->
+<!-- ============ 4. СТАТИСТИКА / ГЕОГРАФИЯ ============ -->
 <section class="slide" data-title="География бедствий">
   <div class="slide-inner">
     <div class="section-head">
@@ -401,7 +313,7 @@
           <div class="grid g2" style="gap:14px">
             <div>
               <div class="row" style="gap:8px;margin-bottom:6px"><span class="chip">🌋 Тихоокеанский пояс</span></div>
-              <p class="small">Япония, Индонезия, Филиппины, Камчатка, Чили, Новая Зеландия — здесь почти все сильные вулканы и землетрясения.</p>
+              <p class="small">Япония, Индонезия, Филиппины, Камчатка, Чили, Новая Зеландия — почти все сильные вулканы и землетрясения.</p>
             </div>
             <div>
               <div class="row" style="gap:8px;margin-bottom:6px"><span class="chip">🌀 Атлантика и Тихий океан</span></div>
@@ -413,89 +325,26 @@
             </div>
             <div>
               <div class="row" style="gap:8px;margin-bottom:6px"><span class="chip">🏙️ Побережье и устья рек</span></div>
-              <p class="small">Больше всего наводнений — в Нидерландах, Бангладеш, Египте, Индии, Пакистане, в устьях Миссисипи и Амура.</p>
+              <p class="small">Больше всего наводнений — в Нидерландах, Бангладеш, Египте, Индии и в устьях Миссисипи и Амура.</p>
             </div>
           </div>
         </div>
-
-        <div class="card rv" style="--d:.4s">
-          <p class="small" style="margin:0">
-            <span class="hl">Россия:</span> на нашу страну приходится значительная часть площади сейсмоопасных зон — Камчатка, Курилы,
-            Байкал, Дальний Восток, Северный Кавказ, Урал, Якутия, Алтай. Ежегодно регистрируется более <b>1 000</b> землетрясений.
-          </p>
-        </div>
       </div>
 
-      <!-- WORLD MAP -->
-      <div class="scene-wrap">
-        <svg class="scene" viewBox="0 0 460 420" role="img" aria-label="Карта мира с отмеченными зонами природных бедствий">
-          <defs>
-            <radialGradient id="globe" cx=".5" cy=".45" r=".6">
-              <stop offset="0" stop-color="#122248"/><stop offset=".75" stop-color="#0a1330"/><stop offset="1" stop-color="#050a1c"/>
-            </radialGradient>
-            <filter id="glowf" x="-60%" y="-60%" width="220%" height="220%">
-              <feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-          </defs>
-          <rect width="460" height="420" fill="#050a16"/>
-          <circle cx="230" cy="210" r="175" fill="url(#globe)" stroke="#1e3a6b" stroke-width="1.6"/>
-
-          <!-- graticule -->
-          <g stroke="#1e3a6b" stroke-width=".9" fill="none" opacity=".85" clip-path="circle(175px at 230px 210px)">
-            <ellipse cx="230" cy="210" rx="175" ry="175"/><ellipse cx="230" cy="210" rx="175" ry="130"/>
-            <ellipse cx="230" cy="210" rx="175" ry="80"/><ellipse cx="230" cy="210" rx="175" ry="30"/>
-            <ellipse cx="230" cy="210" rx="60" ry="175"/><ellipse cx="230" cy="210" rx="120" ry="175"/>
-            <line x1="55" y1="210" x2="405" y2="210"/>
-          </g>
-
-          <!-- landmasses (stylized) -->
-          <g fill="#1c4f7c" opacity=".95" clip-path="circle(175px at 230px 210px)">
-            <!-- Americas -->
-            <path d="M92 108 L142 92 L176 108 L170 132 L186 146 L166 166 L150 190 L128 196 L112 178 L96 168 L86 142 Z"/>
-            <path d="M166 200 L190 208 L200 236 L186 262 L172 292 L156 306 L148 282 L156 254 L150 226 Z"/>
-            <!-- Europe / Africa -->
-            <path d="M244 96 L288 90 L312 104 L306 124 L282 132 L268 120 L246 122 Z"/>
-            <path d="M250 132 L300 130 L318 158 L310 200 L286 236 L262 240 L248 214 L240 178 Z"/>
-            <!-- Asia -->
-            <path d="M300 96 L368 88 L400 104 L392 130 L356 140 L330 132 L306 128 Z"/>
-            <path d="M312 148 L368 142 L392 164 L378 190 L340 196 L318 178 Z"/>
-            <!-- Australia -->
-            <path d="M336 236 L382 232 L396 256 L380 276 L342 272 L330 254 Z"/>
-            <!-- Greenland -->
-            <path d="M170 62 L204 58 L210 78 L180 84 L166 74 Z"/>
-          </g>
-
-          <!-- hazard hotspots -->
-          <g filter="url(#glowf)">
-            <circle cx="106" cy="128" r="6" fill="#fb7185"><animate attributeName="r" values="5;9;5" dur="3s" repeatCount="indefinite"/></circle>
-            <circle cx="163" cy="272" r="6" fill="#fb7185"><animate attributeName="r" values="5;9;5" dur="3s" begin=".5s" repeatCount="indefinite"/></circle>
-            <circle cx="226" cy="200" r="7" fill="#fbbf24"><animate attributeName="r" values="6;11;6" dur="2.6s" begin=".2s" repeatCount="indefinite"/></circle>
-            <circle cx="272" cy="118" r="7" fill="#22d3ee"><animate attributeName="r" values="6;11;6" dur="2.2s" begin=".7s" repeatCount="indefinite"/></circle>
-            <circle cx="318" cy="132" r="6" fill="#22d3ee"><animate attributeName="r" values="5;10;5" dur="2.8s" begin="1s" repeatCount="indefinite"/></circle>
-            <circle cx="392" cy="118" r="6" fill="#a78bfa"><animate attributeName="r" values="5;10;5" dur="3.4s" begin=".3s" repeatCount="indefinite"/></circle>
-            <circle cx="404" cy="188" r="6" fill="#a78bfa"><animate attributeName="r" values="5;10;5" dur="2.4s" begin="1.2s" repeatCount="indefinite"/></circle>
-            <circle cx="358" cy="256" r="6" fill="#fbbf24"><animate attributeName="r" values="5;10;5" dur="3s" begin=".8s" repeatCount="indefinite"/></circle>
-            <circle cx="196" cy="124" r="6" fill="#fb7185"><animate attributeName="r" values="5;10;5" dur="2.7s" begin=".4s" repeatCount="indefinite"/></circle>
-          </g>
-
-          <g font-family="Manrope, sans-serif" font-size="10.5" font-weight="800" fill="#c7d6f5">
-            <text x="84" y="106">АЛЯСКА</text>
-            <text x="138" y="300">ЧИЛИ</text>
-            <text x="206" y="228">ЕГИПЕТ</text>
-            <text x="252" y="100">ИТАЛИЯ</text>
-            <text x="300" y="118">ЯПОНИЯ</text>
-            <text x="382" y="100">СЕВ. АТЛАНТИКА</text>
-            <text x="346" y="286">АВСТРАЛИЯ</text>
-          </g>
-
-          <g font-family="Manrope, sans-serif" font-size="10" font-weight="800">
-            <rect x="14" y="384" width="12" height="12" rx="3" fill="#fb7185"/><text x="32" y="394" fill="#94a3b8">сейсмика</text>
-            <rect x="104" y="384" width="12" height="12" rx="3" fill="#22d3ee"/><text x="122" y="394" fill="#94a3b8">цунами</text>
-            <rect x="188" y="384" width="12" height="12" rx="3" fill="#fbbf24"/><text x="206" y="394" fill="#94a3b8">засуха</text>
-            <rect x="268" y="384" width="12" height="12" rx="3" fill="#a78bfa"/><text x="286" y="394" fill="#94a3b8">ураганы</text>
-          </g>
-        </svg>
-        <div class="scene-cap">Схематичная карта опасных зон</div>
+      <div class="stack">
+        <figure class="photo ar-43 kb-in">
+          <img src="assets/img/tsunami2.jpg" alt="Карта распространения волны цунами в Тихом океане" loading="lazy">
+          <span class="fx fx-water"></span>
+          <figcaption><span class="cap-t">Как волна расходится по океану</span><span class="cap-a">NOAA · Public domain</span></figcaption>
+        </figure>
+        <div class="card rv" style="--d:.2s">
+          <h3 style="margin-bottom:9px">Россия в цифрах</h3>
+          <p class="small" style="margin:0">
+            На страну приходится значительная часть площади сейсмоопасных зон — Камчатка, Курилы, Байкал,
+            Дальний Восток, Северный Кавказ, Урал, Якутия. Ежегодно сейсмологи регистрируют <b>тысячи</b>
+            землетрясений разной силы.
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -559,64 +408,22 @@
       </div>
 
       <div class="stack">
-        <svg class="scene" viewBox="0 0 520 340" role="img" aria-label="Анимация: землетрясение разрушает здания, видны сейсмические волны">
-          <defs>
-            <linearGradient id="qSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#101a38"/><stop offset="1" stop-color="#2a1638"/></linearGradient>
-            <linearGradient id="qGround" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b2036"/><stop offset="1" stop-color="#140f1e"/></linearGradient>
-            <linearGradient id="qWave" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fb7185" stop-opacity="0"/><stop offset=".5" stop-color="#fb7185"/><stop offset="1" stop-color="#fb7185" stop-opacity="0"/></linearGradient>
-          </defs>
-          <rect width="520" height="340" fill="url(#qSky)"/>
-          <g class="sky-a" opacity=".3">
-            <circle cx="430" cy="60" r="40" fill="#fbbf24" opacity=".25"/>
-          </g>
+        <figure class="photo ar-43 kb-lr">
+          <img src="assets/img/earthquake2.jpg" alt="Разрушения после землетрясения Лома-Приета" loading="lazy">
+          <span class="fx fx-alert"></span>
+          <figcaption><span class="cap-t">Землетрясение Лома-Приета, 1989</span><span class="cap-a">FEMA · Public domain</span></figcaption>
+        </figure>
 
-          <g class="shake-hard" style="transform-origin:260px 250px">
-            <!-- buildings -->
-            <g>
-              <rect x="60" y="130" width="52" height="120" rx="3" fill="#2a3357"/>
-              <rect x="120" y="96" width="46" height="154" rx="3" fill="#323d66"/>
-              <rect x="176" y="160" width="40" height="90" rx="3" fill="#262f52"/>
-              <rect x="306" y="118" width="48" height="132" rx="3" fill="#323d66"/>
-              <rect x="362" y="150" width="44" height="100" rx="3" fill="#2a3357"/>
-              <rect x="414" y="126" width="50" height="124" rx="3" fill="#262f52"/>
-            </g>
-            <g fill="#ffd166" opacity=".65">
-              <rect x="68" y="142" width="9" height="12"/><rect x="84" y="142" width="9" height="12"/><rect x="100" y="142" width="9" height="12"/>
-              <rect x="68" y="164" width="9" height="12"/><rect x="100" y="164" width="9" height="12"/>
-              <rect x="128" y="110" width="9" height="12"/><rect x="144" y="110" width="9" height="12"/><rect x="128" y="134" width="9" height="12"/>
-              <rect x="156" y="158" width="9" height="12"/>
-              <rect x="314" y="132" width="9" height="12"/><rect x="330" y="132" width="9" height="12"/><rect x="314" y="156" width="9" height="12"/>
-              <rect x="370" y="162" width="9" height="12"/><rect x="388" y="162" width="9" height="12"/>
-              <rect x="422" y="140" width="9" height="12"/><rect x="438" y="140" width="9" height="12"/><rect x="438" y="164" width="9" height="12"/>
-            </g>
-            <!-- tilted building -->
-            <g transform="rotate(11 240 250)">
-              <rect x="222" y="188" width="42" height="62" rx="3" fill="#37406b"/>
-              <rect x="230" y="200" width="9" height="12" fill="#ffd166" opacity=".6"/>
-              <rect x="246" y="200" width="9" height="12" fill="#ffd166" opacity=".6"/>
-            </g>
-            <!-- crack -->
-            <path d="M0 250 L60 244 L104 258 L152 240 L200 256 L252 238 L300 258 L348 244 L400 256 L470 242 L520 252" stroke="#fb7185" stroke-width="3" fill="none" stroke-linecap="round" opacity=".9"/>
-          </g>
-
-          <path d="M0 250 L60 244 L104 258 L152 240 L200 256 L252 238 L300 258 L348 244 L400 256 L470 242 L520 252 L520 340 L0 340 Z" fill="url(#qGround)"/>
-          <g fill="#0f0b18"><path d="M96 250 l14 -20 12 22 Z"/><path d="M268 242 l18 -24 16 26 Z"/><path d="M436 246 l16 -22 14 24 Z"/></g>
-          <g fill="#94a3b8" opacity=".85">
-            <rect class="debris" x="120" y="180" width="8" height="8" rx="1" style="animation-delay:.2s"/>
-            <rect class="debris" x="210" y="200" width="10" height="7" rx="1" style="animation-delay:.9s"/>
-            <rect class="debris" x="300" y="170" width="7" height="7" rx="1" style="animation-delay:1.5s"/>
-            <rect class="debris" x="400" y="190" width="9" height="9" rx="1" style="animation-delay:2.1s"/>
-          </g>
-
-          <!-- seismic wave strip -->
-          <g transform="translate(0,286)">
-            <rect x="14" y="0" width="492" height="44" rx="10" fill="rgba(4,6,13,.72)" stroke="rgba(251,113,133,.4)"/>
-            <path d="M24 30 q14 -26 28 0 t28 0 t28 0 t28 0 t28 0 t28 0 t28 0 t28 0 t28 0 t28 0 t28 0 t28 0 t28 0 t28 0 t28 0 t28 0"
-                  stroke="url(#qWave)" stroke-width="2.4" fill="none" class="wave-move"/>
-            <text x="26" y="14" font-family="Manrope" font-size="9.5" font-weight="800" fill="#94a3b8">СЕЙСМОГРАММА · РЕГИСТРАЦИЯ ТОЛЧКОВ</text>
-          </g>
-        </svg>
-        <div class="scene-cap">Разрушение зданий при землетрясении</div>
+        <div class="grid g2" style="gap:12px">
+          <figure class="photo ar-11 kb-down">
+            <img src="assets/img/earthquake.jpg" alt="Обрушение здания после землетрясения" loading="lazy">
+            <figcaption><span class="cap-t">Обрушение здания</span><span class="cap-a">N. Cull · CC BY-SA 2.0</span></figcaption>
+          </figure>
+          <figure class="photo ar-11 kb-up">
+            <img src="assets/img/earthquake3.jpg" alt="Разрушения в Офунато после землетрясения в Японии" loading="lazy">
+            <figcaption><span class="cap-t">Офунато, Япония, 2011</span><span class="cap-a">DVIDSHUB · CC BY 2.0</span></figcaption>
+          </figure>
+        </div>
 
         <div class="card rv" style="--d:.2s">
           <h3>Шкала магнитуд Рихтера</h3>
@@ -679,52 +486,17 @@
           <h3 style="color:#fecdd3">⚠️ Запомни</h3>
           <p class="small" style="margin-top:7px">
             В России сильные цунами бывали на <b>Камчатке</b> (1952) и на <b>Курилах</b>.
-            Самое разрушительное цуunami в истории — в Индийском океане в 2004 году: погибло более <b>227 000</b> человек в 14 странах.
+            Самое разрушительное цунами в истории — в Индийском океане в 2004 году: погибло более <b>227 000</b> человек в 14 странах.
           </p>
         </div>
       </div>
 
       <div class="stack">
-        <svg class="scene" viewBox="0 0 520 360" role="img" aria-label="Анимация: гигантская волна цунами набегает на берег с домами">
-          <defs>
-            <linearGradient id="tSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0d1b3d"/><stop offset="1" stop-color="#1d3f63"/></linearGradient>
-            <linearGradient id="tSea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#22d3ee"/><stop offset=".55" stop-color="#1d7fc4"/><stop offset="1" stop-color="#0e3d6b"/></linearGradient>
-            <linearGradient id="tFoam" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity=".95"/><stop offset="1" stop-color="#cffafe" stop-opacity=".5"/></linearGradient>
-            <linearGradient id="tBack" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#155e75"/><stop offset="1" stop-color="#0c3049"/></linearGradient>
-          </defs>
-          <rect width="520" height="360" fill="url(#tSky)"/>
-          <circle cx="90" cy="70" r="34" fill="#e0f2fe" opacity=".25"/>
-          <g class="smoke-puff" style="animation-duration:9s" fill="#64748b" opacity=".2"><ellipse cx="180" cy="48" rx="60" ry="16"/></g>
-
-          <!-- far sea -->
-          <rect x="0" y="150" width="520" height="90" fill="url(#tBack)"/>
-          <g stroke="#a5f3fc" stroke-width="2" opacity=".35" fill="none" class="wave-move slow">
-            <path d="M0 170 q30 -10 60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0"/>
-            <path d="M0 195 q30 -10 60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0"/>
-          </g>
-
-          <!-- land -->
-          <path d="M330 240 L520 232 L520 360 L310 360 Z" fill="#3d3226"/>
-          <path d="M330 240 L520 232 L520 250 L318 258 Z" fill="#5b4a33"/>
-          <!-- houses on the shore -->
-          <g>
-            <rect x="380" y="196" width="40" height="44" fill="#7f5a3d"/><path d="M374 196 L400 172 L426 196 Z" fill="#b91c1c"/>
-            <rect x="440" y="206" width="34" height="34" fill="#8a6440"/><path d="M434 206 L457 186 L480 206 Z" fill="#b91c1c"/>
-            <rect x="348" y="212" width="28" height="28" fill="#6f4f38"/><path d="M342 212 L362 194 L382 212 Z" fill="#991b1b"/>
-          </g>
-
-          <!-- main tsunami wave -->
-          <g class="rise-water">
-            <path d="M-40 360 L-40 190 q60 -20 96 34 q30 -86 92 -84 q52 2 56 76 q34 -34 74 -12 q40 22 30 74 l122 -6 L520 360 Z" fill="url(#tSea)"/>
-            <path d="M-40 190 q60 -20 96 34 q30 -86 92 -84 q52 2 56 76 q34 -34 74 -12 q40 22 30 74" stroke="url(#tFoam)" stroke-width="6" fill="none" stroke-linecap="round"/>
-            <path d="M150 216 q-24 40 -10 90" stroke="#a5f3fc" stroke-width="3" fill="none" opacity=".45"/>
-            <path d="M250 206 q-18 46 -6 96" stroke="#a5f3fc" stroke-width="3" fill="none" opacity=".35"/>
-            <g fill="#e0f7ff" opacity=".7">
-              <circle cx="86" cy="140" r="6"/><circle cx="112" cy="118" r="4"/><circle cx="70" cy="112" r="5"/>
-            </g>
-          </g>
-        </svg>
-        <div class="scene-cap">Цунами набегает на берег</div>
+        <figure class="photo ar-43 kb-in">
+          <img src="assets/img/tsunami.jpg" alt="Следы цунами в Ридзенентакате, Япония" loading="lazy">
+          <span class="fx fx-water"></span>
+          <figcaption><span class="cap-t">Ридзенентаката: вода ушла на 2 км вглубь суши</span><span class="cap-a">US Navy · Public domain</span></figcaption>
+        </figure>
 
         <div class="card rv" style="--d:.2s">
           <h3>Признаки цунами — беги!</h3>
@@ -756,7 +528,7 @@
       <div class="stack">
         <p class="lead">
           <span class="hl">Торнадо</span> — вихревое вращение воздуха диаметром от десятков метров до
-          <b>2–3 км</b>, втягивающее воздух к центру и переносящее его вверх.
+          <b>2–3 км</b>, втягиющее воздух к центру и переносящее его вверх.
           Область поражения узкая, но <span class="hl r">разрушительная</span>.
         </p>
 
@@ -793,70 +565,14 @@
       </div>
 
       <div class="stack">
-        <svg class="scene" viewBox="0 0 520 360" role="img" aria-label="Анимация: торнадо над полем, вращение воронки">
-          <defs>
-            <linearGradient id="tornSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b2445"/><stop offset=".5" stop-color="#38415f"/><stop offset="1" stop-color="#5b5f76"/></linearGradient>
-            <linearGradient id="tornFun" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0" stop-color="#94a3b8" stop-opacity=".05"/><stop offset=".35" stop-color="#cbd5e1" stop-opacity=".7"/>
-              <stop offset=".65" stop-color="#cbd5e1" stop-opacity=".7"/><stop offset="1" stop-color="#94a3b8" stop-opacity=".05"/>
-            </linearGradient>
-            <linearGradient id="tornField" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4b7a3a"/><stop offset="1" stop-color="#24421f"/></linearGradient>
-          </defs>
-          <rect width="520" height="360" fill="url(#tornSky)"/>
-
-          <!-- storm clouds -->
-          <g class="sky-a" fill="#1e293b" opacity=".9">
-            <ellipse cx="130" cy="72" rx="110" ry="40"/><ellipse cx="250" cy="56" rx="140" ry="46"/>
-            <ellipse cx="380" cy="76" rx="100" ry="38"/><ellipse cx="255" cy="98" rx="170" ry="34"/>
-          </g>
-          <g fill="#0f172a" opacity=".5">
-            <ellipse cx="120" cy="98" rx="70" ry="22"/><ellipse cx="360" cy="102" rx="80" ry="24"/>
-          </g>
-          <g class="rain-drop" stroke="#93c5fd" stroke-width="1.6" opacity=".35" stroke-linecap="round">
-            <line x1="60" y1="100" x2="52" y2="126"/><line x1="100" y1="110" x2="92" y2="136"/>
-            <line x1="430" y1="100" x2="422" y2="126"/><line x1="466" y1="112" x2="458" y2="138"/>
-            <line x1="470" y1="60" x2="462" y2="86"/><line x1="40" y1="60" x2="32" y2="86"/>
-          </g>
-
-          <!-- funnel -->
-          <path d="M250 92 L196 300 q54 22 108 0 Z" fill="url(#tornFun)"/>
-          <g class="funnel-spin" style="transform-origin:250px 95px">
-            <path d="M250 92 L212 300" stroke="#e2e8f0" stroke-width="3.4" opacity=".55" fill="none" stroke-linecap="round"/>
-            <path d="M250 92 L288 300" stroke="#e2e8f0" stroke-width="3.4" opacity=".55" fill="none" stroke-linecap="round"/>
-            <path d="M250 92 L250 300" stroke="#f1f5f9" stroke-width="2.6" opacity=".45" fill="none" stroke-linecap="round"/>
-            <path d="M250 92 L232 300" stroke="#cbd5e1" stroke-width="2.4" opacity=".4" fill="none" stroke-linecap="round"/>
-          </g>
-          <ellipse cx="250" cy="306" rx="104" ry="20" fill="#cbd5e1" opacity=".28"/>
-          <ellipse cx="250" cy="300" rx="80" ry="14" fill="#e2e8f0" opacity=".22"/>
-          <g fill="#a8a29e" opacity=".85">
-            <rect class="debris" x="360" y="180" width="8" height="8" rx="1" style="animation-delay:.3s"/>
-            <rect class="debris" x="120" y="200" width="10" height="6" rx="1" style="animation-delay:1.1s"/>
-            <circle class="debris" cx="340" cy="120" r="4" style="animation-delay:1.8s"/>
-            <rect class="debris" x="150" y="130" width="6" height="9" rx="1" style="animation-delay:2.3s"/>
-          </g>
-
-          <!-- field -->
-          <path d="M0 300 q130 26 260 14 q130 -12 260 10 L520 360 L0 360 Z" fill="url(#tornField)"/>
-          <g stroke="#3f6b33" stroke-width="2" opacity=".6" stroke-linecap="round">
-            <path d="M20 320 q10 -18 0 -34"/><path d="M60 326 q10 -20 0 -38"/><path d="M420 324 q10 -20 0 -38"/><path d="M470 320 q10 -18 0 -34"/>
-          </g>
-          <!-- house hit -->
-          <g>
-            <rect x="386" y="286" width="44" height="34" fill="#8b5a3c"/>
-            <path d="M380 286 L408 262 L436 286 Z" fill="#b91c1c"/>
-            <rect x="400" y="300" width="12" height="20" fill="#4b2f1e"/>
-          </g>
-          <!-- car -->
-          <g>
-            <rect x="96" y="316" width="44" height="14" rx="4" fill="#38bdf8"/>
-            <path d="M104 316 L112 306 h16 l8 10 Z" fill="#0ea5e9"/>
-            <circle cx="108" cy="332" r="5" fill="#111827"/><circle cx="130" cy="332" r="5" fill="#111827"/>
-          </g>
-        </svg>
-        <div class="scene-cap">Торнадо над полем</div>
+        <figure class="photo ar-43 kb-up">
+          <img src="assets/img/tornado.jpg" alt="Смерч над дорогой в Элхарте, 1965" loading="lazy">
+          <span class="fx fx-dust"></span>
+          <figcaption><span class="cap-t">Смерч выходит на трассу</span><span class="cap-a">P. Huffman · Public domain</span></figcaption>
+        </figure>
 
         <div class="fact-grid">
-          <div class="fact rv" style="--d:.2s"><div class="fi">🏆</div><div class="ft">Рекорд скорости ветра</div><div class="fd">около <b>490 км/ч</b> ( торнадо в США, 2013)</div></div>
+          <div class="fact rv" style="--d:.2s"><div class="fi">🏆</div><div class="ft">Рекорд скорости ветра</div><div class="fd">около <b>490 км/ч</b> (торнадо в США, 2013)</div></div>
           <div class="fact rv" style="--d:.26s"><div class="fi">🌍</div><div class="ft">Где бывают</div><div class="fd">США («аллея торнадо»), Канада, Австралия, Россия</div></div>
           <div class="fact rv" style="--d:.32s"><div class="fi">⏱️</div><div class="ft">Длительность</div><div class="fd">от 10 секунд до нескольких часов</div></div>
         </div>
@@ -898,7 +614,7 @@
           <div class="grid g2" style="margin-top:11px;gap:12px">
             <div class="card" style="padding:12px 14px"><b>🌀 Ветер</b><div class="small">снос крыш, деревьев, машин</div></div>
             <div class="card" style="padding:12px 14px"><b>🌊 Наводнение</b><div class="small">штормовой прилив + дожди</div></div>
-            <div class="card" style="padding:12px 14px"><b>🌊 Цунами-подобная волна</b><div class="small">особенно в бухтах</div></div>
+            <div class="card" style="padding:12px 14px"><b>🌊 Огромная волна</b><div class="small">особенно в бухтах</div></div>
             <div class="card" style="padding:12px 14px"><b>⚡ Молнии и град</b><div class="small">пожары, разрушения</div></div>
           </div>
         </div>
@@ -916,50 +632,17 @@
       </div>
 
       <div class="stack">
-        <svg class="scene" viewBox="0 0 520 380" role="img" aria-label="Анимация: вид сверху на ураган со спиралью облаков">
-          <defs>
-            <radialGradient id="uSea" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#0e3a5f"/><stop offset="1" stop-color="#06182e"/></radialGradient>
-            <radialGradient id="uEye" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#0b1f3a"/><stop offset=".7" stop-color="#1e3a5f"/><stop offset="1" stop-color="#22d3ee" stop-opacity="0"/></radialGradient>
-          </defs>
-          <rect width="520" height="380" fill="#04101f"/>
-          <rect width="520" height="380" fill="url(#uSea)"/>
-          <g stroke="#0d3a5c" stroke-width="1" opacity=".5">
-            <path d="M0 60h520M0 130h520M0 200h520M0 270h520M0 340h520"/>
-            <path d="M80 0v380M180 0v380M280 0v380M380 0v380M480 0v380"/>
-          </g>
+        <figure class="photo ar-43 kb-in">
+          <img src="assets/img/hurricane.jpg" alt="Спутниковый снимок урагана Сэнди" loading="lazy">
+          <span class="fx fx-water"></span>
+          <figcaption><span class="cap-t">Ураган Сэнди: отчётливо виден «глаз»</span><span class="cap-a">NASA Goddard · Public domain</span></figcaption>
+        </figure>
 
-          <!-- spiral bands -->
-          <g class="spiral-hurricane" style="transform-origin:260px 190px">
-            <g fill="#c7d9f5" opacity=".16">
-              <path d="M260 190 q60 -80 170 -60 q90 18 92 108 q2 82 -84 118 q-96 40 -176 -14 q-64 -44 -32 -96 q28 -46 96 -36 q64 10 62 56 q-2 42 -52 42 q-44 0 -42 -32" fill="none" stroke="#c7d9f5" stroke-width="26" stroke-linecap="round"/>
-            </g>
-            <path d="M260 190 q60 -80 170 -60 q90 18 92 108 q2 82 -84 118 q-96 40 -176 -14 q-64 -44 -32 -96 q28 -46 96 -36 q64 10 62 56 q-2 42 -52 42 q-44 0 -42 -32"
-                  fill="none" stroke="#e2ecff" stroke-width="14" opacity=".3" stroke-linecap="round"/>
-            <path d="M260 190 q60 -80 170 -60 q90 18 92 108 q2 82 -84 118 q-96 40 -176 -14 q-64 -44 -32 -96 q28 -46 96 -36 q64 10 62 56 q-2 42 -52 42 q-44 0 -42 -32"
-                  fill="none" stroke="#ffffff" stroke-width="4" opacity=".45" stroke-linecap="round"/>
-            <!-- outer band -->
-            <path d="M120 300 q-100 -20 -118 -90 q-14 -58 52 -86 q42 -18 78 4" fill="none" stroke="#93c5fd" stroke-width="16" opacity=".2" stroke-linecap="round"/>
-          </g>
-
-          <circle cx="260" cy="190" r="46" fill="url(#uEye)"/>
-          <circle cx="260" cy="190" r="26" fill="#0b1f3a"/>
-          <circle cx="260" cy="190" r="26" fill="none" stroke="#38bdf8" stroke-width="1.5" opacity=".5"/>
-          <g class="pulse-ring"><circle cx="260" cy="190" r="30" fill="none" stroke="#22d3ee" stroke-width="2" opacity=".6"/></g>
-          <g class="pulse-ring" style="animation-delay:1.3s"><circle cx="260" cy="190" r="30" fill="none" stroke="#a78bfa" stroke-width="2" opacity=".5"/></g>
-
-          <!-- wind arrows -->
-          <g stroke="#7dd3fc" stroke-width="2" fill="none" opacity=".5" class="rotor" style="transform-origin:260px 190px">
-            <path d="M260 40 q40 30 22 66" marker-end=""/>
-            <path d="M410 190 q-30 40 -66 22"/>
-            <path d="M260 340 q-40 -30 -22 -66"/>
-            <path d="M110 190 q30 -40 66 -22"/>
-          </g>
-
-          <g font-family="Manrope" font-size="11" font-weight="800" fill="#7dd3fc">
-            <text x="236" y="194">ГЛАЗ</text>
-          </g>
-        </svg>
-        <div class="scene-cap">Вид сверху: спираль урагана и «глаз» бурая</div>
+        <figure class="photo ar-219 kb-lr">
+          <img src="assets/img/hurricane2.jpg" alt="Спутниковый снимок урагана Деннис" loading="lazy">
+          <span class="fx fx-water"></span>
+          <figcaption><span class="cap-t">Ураган Деннис в Атлантике</span><span class="cap-a">NASA · Public domain</span></figcaption>
+        </figure>
 
         <div class="card rv" style="--d:.2s">
           <h3>Сила урагана по категориям (Саффира — Симпсона)</h3>
@@ -991,7 +674,7 @@
     <div class="split">
       <div class="stack">
         <p class="lead">
-          <span class="hl earth">Вулкан</span> — горная постройка с выводящим каналом, через который magma
+          <span class="hl earth">Вулкан</span> — горная постройка с выводящим каналом, через который магма
           выходит на поверхность. Извержение — это не «взрыв», а выброс горных пород, газа и лавы.
         </p>
 
@@ -1023,60 +706,17 @@
       </div>
 
       <div class="stack">
-        <svg class="scene" viewBox="0 0 520 340" role="img" aria-label="Анимация: извержение вулкана, лава, пепел и раскалённые камни">
-          <defs>
-            <linearGradient id="vSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#160d28"/><stop offset=".6" stop-color="#33132f"/><stop offset="1" stop-color="#5b2320"/></linearGradient>
-            <linearGradient id="vCone" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2b1d38"/><stop offset=".5" stop-color="#3e2a48"/><stop offset="1" stop-color="#20162c"/></linearGradient>
-            <linearGradient id="vLava" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#ff2d2d"/><stop offset=".5" stop-color="#ff8c1a"/><stop offset="1" stop-color="#ffe57a"/></linearGradient>
-            <radialGradient id="vGlow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ff8c1a" stop-opacity=".9"/><stop offset="1" stop-color="#ff8c1a" stop-opacity="0"/></radialGradient>
-          </defs>
-          <rect width="520" height="340" fill="url(#vSky)"/>
-          <circle cx="260" cy="140" r="150" fill="url(#vGlow)" opacity=".3"/>
+        <figure class="photo ar-34 kb-in">
+          <img src="assets/img/volcano.jpg" alt="Ночное извержение вулкана Стромболи" loading="lazy">
+          <span class="fx fx-heat"></span>
+          <figcaption><span class="cap-t">Стромболи: выброс лавы и пепла</span><span class="cap-a">W. Beyer · CC BY-SA 3.0</span></figcaption>
+        </figure>
 
-          <!-- ash plume -->
-          <g>
-            <ellipse cx="260" cy="120" rx="46" ry="20" fill="#6b5b7a" class="smoke-puff" opacity=".5"/>
-            <ellipse cx="268" cy="100" rx="64" ry="26" fill="#7d6b8c" class="smoke-puff" style="animation-delay:1.3s" opacity=".45"/>
-            <ellipse cx="250" cy="76" rx="86" ry="30" fill="#8e7ca0" class="smoke-puff" style="animation-delay:2.5s" opacity=".4"/>
-            <ellipse cx="272" cy="52" rx="104" ry="30" fill="#9d8fb0" class="smoke-puff" style="animation-delay:3.4s" opacity=".3"/>
-          </g>
-
-          <!-- background mountains -->
-          <path d="M0 240 L90 190 L160 240 Z" fill="#241733"/>
-          <path d="M360 240 L440 196 L520 240 Z" fill="#241733"/>
-
-          <!-- volcano cone -->
-          <path d="M110 300 L215 132 L305 132 L410 300 Z" fill="url(#vCone)"/>
-          <path d="M215 132 L305 132 L290 112 L230 112 Z" fill="#4a3355"/>
-          <!-- crater glow -->
-          <ellipse cx="260" cy="114" rx="42" ry="13" fill="#ffb347" opacity=".85" class="text-anim"/>
-          <ellipse cx="260" cy="114" rx="58" ry="18" fill="#ff8c1a" opacity=".28"/>
-
-          <!-- lava streams -->
-          <path d="M244 132 q-8 44 10 84 q10 30 -4 84" stroke="url(#vLava)" stroke-width="12" fill="none" stroke-linecap="round" class="lava-flow"/>
-          <path d="M282 130 q10 40 -4 70 q-8 26 14 60" stroke="url(#vLava)" stroke-width="8" fill="none" stroke-linecap="round" class="lava-flow" style="animation-delay:.8s"/>
-          <path d="M258 116 q-14 -26 6 -40" stroke="#ffe57a" stroke-width="5" fill="none" stroke-linecap="round" opacity=".8" class="lava-flow"/>
-
-          <!-- lava pool -->
-          <ellipse cx="252" cy="300" rx="52" ry="12" fill="#ff6a2b" opacity=".9" class="lava-flow"/>
-          <ellipse cx="252" cy="300" rx="34" ry="8" fill="#ffe066" opacity=".85" class="lava-flow" style="animation-delay:.5s"/>
-
-          <!-- embers -->
-          <g fill="#ffb347">
-            <circle class="ember" cx="250" cy="112" r="3" style="--dx:34px;animation-delay:.1s"/>
-            <circle class="ember" cx="256" cy="110" r="2.4" style="--dx:-42px;animation-delay:1s"/>
-            <circle class="ember" cx="262" cy="112" r="2" style="--dx:20px;animation-delay:1.9s"/>
-            <circle class="ember" cx="270" cy="110" r="1.8" style="--dx:-26px;animation-delay:2.7s"/>
-          </g>
-
-          <!-- foreground -->
-          <path d="M0 316 L120 306 L240 318 L360 304 L520 314 L520 340 L0 340 Z" fill="#150d1f"/>
-          <g fill="#0d0814">
-            <path d="M46 316 l6 -30 6 30 Z"/><path d="M54 300 l3 -14 4 14 Z"/>
-            <path d="M470 312 l7 -34 7 34 Z"/>
-          </g>
-        </svg>
-        <div class="scene-cap">Извержение вулкана: лава, пепел, раскалённые камни</div>
+        <figure class="photo ar-43 kb-rl">
+          <img src="assets/img/volcano2.jpg" alt="Пепельный шлейф вулкана Чайтен со спутника" loading="lazy">
+          <span class="fx fx-smoke"></span>
+          <figcaption><span class="cap-t">Пепельный шлейф вулкана Чайтен</span><span class="cap-a">NASA · Public domain</span></figcaption>
+        </figure>
 
         <div class="fact-grid">
           <div class="fact rv" style="--d:.2s"><div class="fi">🌋</div><div class="ft">Вулканов в мире</div><div class="fd">около <b>1 500</b> действующих</div></div>
@@ -1139,58 +779,24 @@
       </div>
 
       <div class="stack">
-        <svg class="scene" viewBox="0 0 520 340" role="img" aria-label="Анимация: вода затапливает дома и улицу">
-          <defs>
-            <linearGradient id="fSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#17203c"/><stop offset="1" stop-color="#33415c"/></linearGradient>
-            <linearGradient id="fWater" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#38bdf8" stop-opacity=".85"/><stop offset=".6" stop-color="#1d6fa5" stop-opacity=".95"/><stop offset="1" stop-color="#0e3a5c"/></linearGradient>
-            <linearGradient id="fGround" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a3a42"/><stop offset="1" stop-color="#20202a"/></linearGradient>
-          </defs>
-          <rect width="520" height="340" fill="url(#fSky)"/>
-          <!-- clouds -->
-          <g fill="#475569" opacity=".85" class="sky-a">
-            <ellipse cx="130" cy="52" rx="96" ry="30"/><ellipse cx="300" cy="38" rx="120" ry="32"/><ellipse cx="450" cy="60" rx="90" ry="26"/>
-          </g>
-          <g stroke="#93c5fd" stroke-width="1.6" opacity=".5" stroke-linecap="round">
-            <line class="rain-drop" x1="60" y1="80" x2="52" y2="112"/>
-            <line class="rain-drop" x1="120" y1="80" x2="112" y2="112" style="animation-delay:.4s"/>
-            <line class="rain-drop" x1="180" y1="80" x2="172" y2="112" style="animation-delay:.8s"/>
-            <line class="rain-drop" x1="240" y1="80" x2="232" y2="112" style="animation-delay:.2s"/>
-            <line class="rain-drop" x1="300" y1="80" x2="292" y2="112" style="animation-delay:.6s"/>
-            <line class="rain-drop" x1="360" y1="80" x2="352" y2="112" style="animation-delay:1s"/>
-            <line class="rain-drop" x1="420" y1="80" x2="412" y2="112" style="animation-delay:.3s"/>
-            <line class="rain-drop" x1="470" y1="80" x2="462" y2="112" style="animation-delay:.7s"/>
-          </g>
+        <figure class="photo ar-43 kb-lr">
+          <img src="assets/img/flood2.jpg" alt="Наводнение в Праге, 2002" loading="lazy">
+          <span class="fx fx-water"></span>
+          <figcaption><span class="cap-t">Наводнение в Праге, август 2002</span><span class="cap-a">Wikimedia Commons · CC BY 3.0</span></figcaption>
+        </figure>
 
-          <!-- city -->
-          <g>
-            <rect x="40" y="140" width="52" height="130" fill="#3c4257"/><rect x="100" y="166" width="44" height="104" fill="#333a4d"/>
-            <rect x="360" y="150" width="56" height="120" fill="#3c4257"/><rect x="426" y="180" width="48" height="90" fill="#333a4d"/>
-            <g fill="#fde68a" opacity=".6">
-              <rect x="48" y="152" width="10" height="13"/><rect x="66" y="152" width="10" height="13"/>
-              <rect x="48" y="178" width="10" height="13"/><rect x="84" y="178" width="10" height="13"/>
-              <rect x="108" y="178" width="10" height="13"/>
-              <rect x="368" y="162" width="10" height="13"/><rect x="386" y="162" width="10" height="13"/>
-              <rect x="404" y="188" width="10" height="13"/><rect x="434" y="194" width="10" height="13"/>
-            </g>
-          </g>
-          <!-- houses -->
-          <g>
-            <rect x="176" y="222" width="56" height="48" fill="#6b5138"/><path d="M170 222 L204 196 L238 222 Z" fill="#8b2f2f"/>
-            <rect x="248" y="240" width="48" height="30" fill="#5d4632"/><path d="M242 240 L272 218 L302 240 Z" fill="#7f2a2a"/>
-          </g>
-
-          <!-- street + rising water -->
-          <rect x="0" y="252" width="520" height="88" fill="url(#fGround)"/>
-          <path d="M20 290 h480" stroke="#4b5563" stroke-width="3" stroke-dasharray="22 16"/>
-          <g class="rise-water">
-            <rect x="0" y="256" width="520" height="90" fill="url(#fWater)"/>
-            <path d="M0 258 q30 -8 60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0" stroke="#bae6fd" stroke-width="3" fill="none" opacity=".8" class="wave-move slow"/>
-          </g>
-          <!-- floating items -->
-          <g class="debris" opacity=".9"><rect x="300" y="230" width="26" height="14" rx="3" fill="#e2e8f0"/></g>
-          <g class="debris" style="animation-delay:1.4s" opacity=".9"><path d="M120 240 l16 -8 16 8 -6 10 h-20 Z" fill="#fbbf24"/></g>
-        </svg>
-        <div class="scene-cap">Затопление улицы: вода поднимается</div>
+        <div class="grid g2" style="gap:12px">
+          <figure class="photo ar-11 kb-down">
+            <img src="assets/img/flood.jpg" alt="Помощь пострадавшим при наводнении" loading="lazy">
+            <span class="fx fx-water"></span>
+            <figcaption><span class="cap-t">Помощь людям</span><span class="cap-a">DFID · CC BY 2.0</span></figcaption>
+          </figure>
+          <figure class="photo ar-11 kb-up">
+            <img src="assets/img/flood3.jpg" alt="Помощь при наводнении в округеMohawk" loading="lazy">
+            <span class="fx fx-water"></span>
+            <figcaption><span class="cap-t">Спасательная операция</span><span class="cap-a">US Army · Public domain</span></figcaption>
+          </figure>
+        </div>
 
         <div class="fact-grid">
           <div class="fact rv" style="--d:.2s"><div class="fi">💧</div><div class="ft">Глубина для авто</div><div class="fd"><b>30 см</b> — колеса встают, <b>1 м</b> — авто сносит</div></div>
@@ -1202,7 +808,7 @@
   </div>
 </section>
 
-<!-- ============ 11. ОПОЛЗЕНЬ / СЕЛИ / ЛАВИНЫ ============ -->
+<!-- ============ 11. ОПОЛЗНИ / СЕЛИ / ЛАВИНЫ ============ -->
 <section class="slide" data-title="Оползни, сели, лавины">
   <div class="slide-inner">
     <div class="section-head">
@@ -1223,7 +829,7 @@
         <div class="grid g3">
           <div class="card rv" style="--d:.08s">
             <div class="card-head"><div class="icon-box">🪨</div><h3>Оползни</h3></div>
-            <p class="small">Смещение грунта и камней. Бывают <b>оплывины</b> (грязь+торф) — самые опасные: несут дома и лес.</p>
+            <p class="small">Смещение грунта и камней. Бывают <b>оплывины</b> (грязь + торф) — самые опасные: несут дома и лес.</p>
           </div>
           <div class="card rv" style="--d:.15s">
             <div class="card-head"><div class="icon-box">🌊</div><h3>Селевые потоки</h3></div>
@@ -1250,7 +856,7 @@
           <h3>Признаки приближающегося оползня</h3>
           <ul class="list warn" style="margin-top:10px">
             <li>Трещины на склоне и на стенах зданий, «просадка» фундамента</li>
-            <li>Звук похожий на гром или потрескивание из-под земли</li>
+            <li>Звук, похожий на гром или потрескивание из-под земли</li>
             <li>Мутные ручьи, вода в реке стала мутной и поднялась без дождя</li>
             <li>Необычные зигзаги на дороге, разрывы трубопровода, смещение заборов</li>
             <li>Птицы и звери массово уходят со склона — <b>это главный природный сигнал!</b></li>
@@ -1259,55 +865,11 @@
       </div>
 
       <div class="stack">
-        <svg class="scene" viewBox="0 0 520 340" role="img" aria-label="Анимация: оползень сходит с горы на дорогу">
-          <defs>
-            <linearGradient id="lSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1a2440"/><stop offset="1" stop-color="#4a4258"/></linearGradient>
-            <linearGradient id="lSlope" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5c5548"/><stop offset="1" stop-color="#3a3428"/></linearGradient>
-            <linearGradient id="lMud" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a1805c"/><stop offset="1" stop-color="#5c4632"/></linearGradient>
-          </defs>
-          <rect width="520" height="340" fill="url(#lSky)"/>
-          <g fill="#6b7280" opacity=".35" class="sky-a">
-            <ellipse cx="120" cy="50" rx="80" ry="22"/><ellipse cx="330" cy="42" rx="70" ry="18"/>
-          </g>
-
-          <!-- mountain -->
-          <path d="M0 200 L140 60 L300 200 Z" fill="url(#lSlope)"/>
-          <path d="M140 60 L176 92 L140 88 L110 96 Z" fill="#e2e8f0" opacity=".8"/>
-          <path d="M0 200 L140 60 L176 92 L110 100 L60 150 Z" fill="#6e6757" opacity=".5"/>
-
-          <!-- crack at top -->
-          <path d="M96 96 q24 10 40 26" stroke="#fb7185" stroke-width="3" fill="none" stroke-linecap="round"/>
-          <g class="pulse-ring" style="transform-origin:118px 110px"><circle cx="118" cy="110" r="12" fill="none" stroke="#fb7185" stroke-width="2" opacity=".8"/></g>
-
-          <!-- sliding mass -->
-          <g class="debris" style="animation-duration:3.4s">
-            <path d="M70 130 q60 -14 108 24 q50 40 40 96 l-150 22 q-24 -78 2 -142 Z" fill="url(#lMud)" opacity=".92"/>
-            <g fill="#7a6244" opacity=".9">
-              <circle cx="110" cy="180" r="7"/><circle cx="150" cy="215" r="5"/><circle cx="196" cy="196" r="6"/>
-              <circle cx="128" cy="248" r="5.5"/><circle cx="176" cy="262" r="4.5"/>
-            </g>
-            <g fill="#3f3a2e">
-              <path d="M84 130 l22 -14 18 12 -6 20 Z"/>
-              <rect x="150" y="176" width="20" height="14" rx="2" transform="rotate(24 160 183)"/>
-            </g>
-          </g>
-
-          <!-- road + car -->
-          <path d="M240 250 L520 236 L520 340 L200 340 Z" fill="#2f333d"/>
-          <path d="M270 288 L520 276" stroke="#e5e7eb" stroke-width="3" stroke-dasharray="20 18"/>
-          <g transform="rotate(-4 420 296)">
-            <rect x="392" y="280" width="56" height="18" rx="5" fill="#60a5fa"/>
-            <path d="M402 280 L412 268 h18 l10 12 Z" fill="#2563eb"/>
-            <circle cx="406" cy="300" r="6" fill="#111827"/><circle cx="434" cy="300" r="6" fill="#111827"/>
-          </g>
-
-          <!-- base -->
-          <path d="M0 250 L120 226 L200 300 L0 340 Z" fill="#3a3428"/>
-          <g fill="#2f3a2a" opacity=".9">
-            <path d="M40 262 l8 -34 8 34 Z"/><path d="M58 264 l6 -26 7 26 Z"/><path d="M20 266 l7 -28 7 28 Z"/>
-          </g>
-        </svg>
-        <div class="scene-cap">Сход оползня на дорогу</div>
+        <figure class="photo ar-43 kb-lr">
+          <img src="assets/img/landslide.jpg" alt="Оползень на Каракорумском шоссе в Пакистане" loading="lazy">
+          <span class="fx fx-dust"></span>
+          <figcaption><span class="cap-t">Дорога перекрыта оползневыми массами</span><span class="cap-a">Wikimedia Commons · CC BY-SA 3.0</span></figcaption>
+        </figure>
 
         <div class="card rv" style="--d:.2s">
           <h3>Как защититься</h3>
@@ -1350,7 +912,7 @@
           </div>
           <div class="card rv" style="--d:.14s">
             <div class="card-head"><div class="icon-box">🌳</div><h3>Верховой</h3></div>
-            <p class="small">Горит крона — огонь по кронам идёт <b>со скоростью ветра</b>. Не остановить без авиации.</p>
+            <p class="small">Горит крона — огонь идёт по кронам <b>со скоростью ветра</b>. Не остановить без авиации.</p>
           </div>
           <div class="card rv" style="--d:.20s">
             <div class="card-head"><div class="icon-box">🕳️</div><h3>Торфяной</h3></div>
@@ -1372,89 +934,28 @@
           <p class="small" style="margin-top:11px"><b>Более 80% лесных пожаров</b> — по вине человека. Это значит, что пожар можно предотвратить.</p>
         </div>
 
-        <div class="card rv" style="--d:.36s" >
+        <div class="card rv" style="--d:.36s">
           <h3 style="color:#fed7aa">⚠️ Опасность дыма</h3>
           <p class="small" style="margin-top:7px">
             Очень опасен <b>угарный газ CO</b> — не имеет цвета и запаха, но отравляет мгновенно. Также вредны мелкодисперсные частицы:
-            попадая в лёгкие, они оседают там на годы. В задымлённом помещении закройте двери, окна, загерметируйте щели мокрой тканью.
+            попадая в лёгкие, они оседают там на годы. В задымлённом помещении закройте двери, окна, загерметизируйте щели мокрой тканью.
           </p>
         </div>
       </div>
 
       <div class="stack">
-        <svg class="scene" viewBox="0 0 520 340" role="img" aria-label="Анимация: лесной пожар, огонь, дым и искры">
-          <defs>
-            <linearGradient id="wSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b1220"/><stop offset=".55" stop-color="#6b2412"/><stop offset="1" stop-color="#b1441a"/></linearGradient>
-            <linearGradient id="flameG" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#ff2d00"/><stop offset=".45" stop-color="#ff9500"/><stop offset="1" stop-color="#ffe066"/></linearGradient>
-          </defs>
-          <rect width="520" height="340" fill="url(#wSky)"/>
+        <figure class="photo ar-43 kb-in">
+          <img src="assets/img/wildfire.jpg" alt="Лесной пожар на Мадейре, Португалия" loading="lazy">
+          <span class="fx fx-smoke"></span>
+          <span class="fx fx-heat"></span>
+          <figcaption><span class="cap-t">Пожар в эвкалиптовом лесу, Мадейра</span><span class="cap-a">anagh · CC BY-SA 3.0</span></figcaption>
+        </figure>
 
-          <!-- smoke -->
-          <g>
-            <ellipse cx="150" cy="70" rx="70" ry="28" fill="#3f3f46" class="smoke-puff" opacity=".6" style="animation-duration:7s"/>
-            <ellipse cx="290" cy="52" rx="96" ry="34" fill="#52525b" class="smoke-puff" opacity=".55" style="animation-duration:8s;animation-delay:1.5s"/>
-            <ellipse cx="430" cy="80" rx="80" ry="30" fill="#3f3f46" class="smoke-puff" opacity=".5" style="animation-duration:9s;animation-delay:3s"/>
-          </g>
-
-          <!-- distant ridge -->
-          <path d="M0 200 q120 -34 260 -14 q140 20 260 -6 L520 240 L0 240 Z" fill="#231a1a" opacity=".8"/>
-
-          <!-- fire line -->
-          <g>
-            <g fill="url(#flameG)" class="flame" transform="translate(0,0)">
-              <path d="M40 250 q-8 -34 12 -52 q2 20 12 26 q6 -28 22 -38 q-4 30 6 44 q10 10 10 20 Z"/>
-            </g>
-            <g fill="url(#flameG)" class="flame" style="animation-delay:.25s" transform="translate(0,0)">
-              <path d="M120 250 q-10 -40 14 -60 q2 24 14 30 q8 -32 26 -44 q-4 34 8 50 q10 12 8 24 Z"/>
-            </g>
-            <g fill="url(#flameG)" class="flame" style="animation-delay:.5s">
-              <path d="M210 250 q-12 -48 16 -70 q2 28 16 34 q8 -36 30 -48 q-6 38 8 56 q12 14 8 28 Z"/>
-            </g>
-            <g fill="url(#flameG)" class="flame" style="animation-delay:.15s">
-              <path d="M320 250 q-10 -40 14 -58 q2 22 14 28 q6 -30 24 -40 q-4 32 6 46 q10 12 8 22 Z"/>
-            </g>
-            <g fill="url(#flameG)" class="flame" style="animation-delay:.35s">
-              <path d="M420 250 q-8 -34 12 -50 q2 20 12 24 q6 -26 20 -34 q-4 28 6 40 q8 10 8 20 Z"/>
-            </g>
-          </g>
-          <g fill="#ffd166" opacity=".55" class="flame" style="animation-delay:.6s">
-            <path d="M170 250 q-6 -22 8 -34 q2 14 8 18 q4 -18 14 -24 q-2 20 4 30 q6 6 4 10 Z"/>
-          </g>
-
-          <!-- embers -->
-          <g fill="#ffb347">
-            <circle class="ember" cx="120" cy="200" r="3" style="--dx:30px;animation-delay:.2s"/>
-            <circle class="ember" cx="220" cy="190" r="2.5" style="--dx:-36px;animation-delay:1s"/>
-            <circle class="ember" cx="330" cy="200" r="3" style="--dx:22px;animation-delay:1.7s"/>
-            <circle class="ember" cx="420" cy="195" r="2" style="--dx:-28px;animation-delay:2.4s"/>
-            <circle class="ember" cx="270" cy="180" r="2.2" style="--dx:44px;animation-delay:3s"/>
-          </g>
-
-          <!-- ground + burned trees -->
-          <path d="M0 250 h520 v90 H0 Z" fill="#1a1210"/>
-          <g fill="#161211">
-            <path d="M70 252 l6 -46 6 46 Z"/><path d="M82 240 l14 -12 -14 -10 Z"/><path d="M82 250 l-16 -12 16 -10 Z"/>
-            <path d="M200 252 l7 -54 7 54 Z"/><path d="M214 236 l18 -14 -18 -12 Z"/><path d="M214 248 l-20 -14 20 -12 Z"/>
-            <path d="M390 252 l6 -42 6 42 Z"/><path d="M402 240 l14 -10 -14 -10 Z"/><path d="M402 248 l-14 -10 14 -10 Z"/>
-          </g>
-          <!-- burning tree -->
-          <g>
-            <rect x="288" y="180" width="8" height="72" fill="#241a14"/>
-            <g fill="#ff8c1a" class="flame" style="animation-delay:.2s">
-              <path d="M292 180 q-8 -22 0 -38 q8 16 0 38 Z"/>
-            </g>
-            <g fill="#ffd166" class="flame" style="animation-delay:.45s">
-              <path d="M292 168 q-5 -14 0 -24 q5 10 0 24 Z"/>
-            </g>
-          </g>
-          <!-- firefighter silhouette -->
-          <g transform="translate(140,238)">
-            <circle cx="0" cy="-16" r="7" fill="#0f172a"/>
-            <rect x="-7" y="-9" width="14" height="18" rx="4" fill="#f59e0b"/>
-            <rect x="-9" y="-22" width="18" height="4" rx="2" fill="#fbbf24"/>
-          </g>
-        </svg>
-        <div class="scene-cap">Лесной пожар: огонь, дым и искры</div>
+        <figure class="photo ar-219 kb-rl">
+          <img src="assets/img/wildfire2.jpg" alt="Тушение лесного пожара" loading="lazy">
+          <span class="fx fx-smoke"></span>
+          <figcaption><span class="cap-t">Борьба с лесным пожаром</span><span class="cap-a">U.S. Army · CC BY 2.0</span></figcaption>
+        </figure>
 
         <div class="card rv" style="--d:.2s">
           <h3>Если вы оказались в лесу при пожаре</h3>
@@ -1485,14 +986,14 @@
     <div class="split">
       <div class="stack">
         <p class="lead">
-          Гроза — это мощное электрическое разряды в грозовом облаке. Отсюда <b>молнии, град, шквал и ливень</b>.
+          Гроза — это мощный электрический разряд в грозовом облаке. Отсюда <b>молнии, град, шквал и ливень</b>.
           Даже при ясном небе гроза может прийти за секунды: кучево-дождевое облако растёт быстро.
         </p>
 
         <div class="grid g2">
           <div class="card rv" style="--d:.08s">
             <div class="card-head"><div class="icon-box">⚡</div><h3>Молния</h3></div>
-            <p class="small">Разряд в <b>30 000 °C</b> — в 5 раз горячее поверхности Солнца. Прямой удар убивает мгновенно, расстояние до разряда опасно до <b>10 м</b>.</p>
+            <p class="small">Разряд в <b>30 000 °C</b> — в 5 раз горячее поверхности Солнца. Прямой удар убивает мгновенно, опасно на расстоянии до <b>10 м</b>.</p>
           </div>
           <div class="card rv" style="--d:.14s">
             <div class="card-head"><div class="icon-box">🧊</div><h3>Град</h3></div>
@@ -1521,66 +1022,18 @@
       </div>
 
       <div class="stack">
-        <svg class="scene" viewBox="0 0 520 340" role="img" aria-label="Анимация: грозовое облако с молнией, градом и дождём">
-          <defs>
-            <linearGradient id="gSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0a0f26"/><stop offset="1" stop-color="#26314f"/></linearGradient>
-            <linearGradient id="gCloud" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5b6478"/><stop offset="1" stop-color="#232a3a"/></linearGradient>
-          </defs>
-          <rect width="520" height="340" fill="url(#gSky)"/>
+        <figure class="photo ar-43 kb-up">
+          <img src="assets/img/storm.jpg" alt="Грозовое облако с молниями" loading="lazy">
+          <span class="fx fx-flash"></span>
+          <span class="fx fx-rain"></span>
+          <figcaption><span class="cap-t">Грозовой фронт над полем</span><span class="cap-a">Yann · CC BY-SA 4.0</span></figcaption>
+        </figure>
 
-          <g class="sky-a">
-            <ellipse cx="150" cy="82" rx="90" ry="34" fill="url(#gCloud)"/>
-            <ellipse cx="260" cy="62" rx="110" ry="40" fill="url(#gCloud)"/>
-            <ellipse cx="370" cy="88" rx="90" ry="32" fill="url(#gCloud)"/>
-            <ellipse cx="260" cy="104" rx="150" ry="30" fill="#1b2130"/>
-          </g>
-
-          <!-- lightning -->
-          <g class="lightning-flash">
-            <path d="M258 104 l-22 44 h22 l-26 52" stroke="#fde68a" stroke-width="4" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
-            <path d="M258 104 l-22 44 h22 l-26 52" stroke="#fff7cc" stroke-width="8" fill="none" opacity=".4" stroke-linejoin="round"/>
-            <path d="M236 148 l-20 30" stroke="#fde68a" stroke-width="2.6" fill="none"/>
-          </g>
-          <circle cx="244" cy="176" r="60" fill="#fef3c7" opacity=".1"/>
-
-          <!-- rain -->
-          <g stroke="#93c5fd" stroke-width="1.8" opacity=".55" stroke-linecap="round">
-            <line class="rain-drop" x1="90" y1="110" x2="80" y2="150"/>
-            <line class="rain-drop" x1="140" y1="110" x2="130" y2="150" style="animation-delay:.3s"/>
-            <line class="rain-drop" x1="190" y1="110" x2="180" y2="150" style="animation-delay:.6s"/>
-            <line class="rain-drop" x1="300" y1="110" x2="290" y2="150" style="animation-delay:.15s"/>
-            <line class="rain-drop" x1="350" y1="110" x2="340" y2="150" style="animation-delay:.45s"/>
-            <line class="rain-drop" x1="400" y1="110" x2="390" y2="150" style="animation-delay:.75s"/>
-            <line class="rain-drop" x1="450" y1="110" x2="440" y2="150" style="animation-delay:.25s"/>
-          </g>
-
-          <!-- hail -->
-          <g fill="#e0f2fe">
-            <g class="debris" style="animation-duration:2s"><rect x="120" y="120" width="10" height="10" rx="2" transform="rotate(20 125 125)"/></g>
-            <g class="debris" style="animation-duration:2.4s;animation-delay:.7s"><rect x="330" y="130" width="12" height="12" rx="2" transform="rotate(-15 336 136)"/></g>
-            <g class="debris" style="animation-duration:1.8s;animation-delay:1.3s"><circle cx="420" cy="140" r="7"/></g>
-            <g class="debris" style="animation-duration:2.2s;animation-delay:.4s"><rect x="410" y="120" width="9" height="9" rx="2"/></g>
-          </g>
-
-          <!-- ground -->
-          <rect x="0" y="272" width="520" height="68" fill="#1a2436"/>
-          <g opacity=".8">
-            <path d="M0 272 q60 -14 130 0 q70 -18 140 0 q70 -14 130 0 q60 -12 120 0 L520 300 L0 300 Z" fill="#2b3a54"/>
-          </g>
-          <!-- puddle -->
-          <g class="rise-water" opacity=".85">
-            <ellipse cx="200" cy="300" rx="90" ry="14" fill="#38bdf8" opacity=".5"/>
-            <ellipse cx="380" cy="310" rx="70" ry="11" fill="#38bdf8" opacity=".4"/>
-          </g>
-          <!-- windsock / tree -->
-          <g>
-            <rect x="452" y="200" width="5" height="100" fill="#475569"/>
-            <g class="rotor" style="transform-origin:454px 205px">
-              <path d="M454 205 q40 -14 60 4 q-30 20 -60 -4 Z" fill="#ef4444"/>
-            </g>
-          </g>
-        </svg>
-        <div class="scene-cap">Гроза: молния, град и ливень</div>
+        <figure class="photo ar-219 kb-down">
+          <img src="assets/img/hail.jpg" alt="Градовая буря" loading="lazy">
+          <span class="fx fx-rain"></span>
+          <figcaption><span class="cap-t">Град: градины размером с кулак</span><span class="cap-a">NOAA · Public domain</span></figcaption>
+        </figure>
 
         <div class="card rv" style="--d:.2s">
           <h3>Помни: гроза приходит быстро</h3>
@@ -1596,7 +1049,308 @@
   </div>
 </section>
 
-<!-- ============ 14. ПРОГНОЗИРОВАНИЕ ============ -->
+<!-- ============ 14. РОССИЯ ============ -->
+<section class="slide" data-title="Природные ЧС в России">
+  <div class="slide-inner">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow"><span class="dot"></span> Наша страна</span>
+        <h2 class="slide-title">🇷🇺 Природные ЧС <span class="grad-text">в России</span></h2>
+      </div>
+      <div class="section-num">13</div>
+    </div>
+
+    <div class="split wide-text">
+      <div class="stack">
+        <p class="lead">
+          Россия занимает <b>11 часовых поясов</b> и обладает огромным разнообразием природы.
+          Практически в каждом регионе есть свой «профильный» вид стихийного бедствия.
+        </p>
+
+        <div class="grid g2" style="gap:14px">
+          <div class="card">
+            <div class="card-head"><div class="icon-box">🌋</div><h3>Камчатка, Курилы</h3></div>
+            <p class="small">29 действующих вулканов, землетрясения, цунами, вулканический пепел, лавины.</p>
+          </div>
+          <div class="card">
+            <div class="card-head"><div class="icon-box">⛰️</div><h3>Северный Кавказ</h3></div>
+            <p class="small">Сейсмика, оползни, сели, лавины, снежные лавины на перевалах.</p>
+          </div>
+          <div class="card">
+            <div class="card-head"><div class="icon-box">🌊</div><h3>Дальний Восток, Байкал</h3></div>
+            <p class="small">Землетрясения, наводнения на Амуре и Лене, ледовые заторы.</p>
+          </div>
+          <div class="card">
+            <div class="card-head"><div class="icon-box">🔥</div><h3>Сибирь, Якутия</h3></div>
+            <p class="small">Лесные и торфяные пожары, наледь, вечная мерзлота, экстремальные морозы.</p>
+          </div>
+          <div class="card">
+            <div class="card-head"><div class="icon-box">🌾</div><h3>Юг России</h3></div>
+            <p class="small">Засухи, пыльные бури, ураганы и шквалы на побережье Чёрного и Азовского морей.</p>
+          </div>
+          <div class="card">
+            <div class="card-head"><div class="icon-box">❄️</div><h3>Арктика и Крайний Север</h3></div>
+            <p class="small">Бураны, метели, наледь, гололёд, сжатие льдов.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="stack">
+        <figure class="photo ar-43 kb-in">
+          <img src="assets/img/volcano_ru.jpg" alt="Извержение Ключевской сопки, Камчатка" loading="lazy">
+          <span class="fx fx-heat"></span>
+          <figcaption><span class="cap-t">Извержение Ключевской сопки</span><span class="cap-a">NASA · Public domain</span></figcaption>
+        </figure>
+
+        <figure class="photo ar-219 kb-lr">
+          <img src="assets/img/baikal.jpg" alt="Панорама озера Байкал" loading="lazy">
+          <figcaption><span class="cap-t">Озеро Байкал — зона повышенной сейсмичности</span><span class="cap-a">S. Pesterev · CC BY-SA 4.0</span></figcaption>
+        </figure>
+
+        <div class="card rv" style="--d:.2s">
+          <h3>Главное правило для России</h3>
+          <p class="small" style="margin-top:8px">
+            Следи за <b>официальными оповещениями</b> МЧС: SMS, сирены, сообщения на ТВ и в интернете.
+            Это <b>единственная</b> возможность узнать о надвигающейся ЧС вовремя. Убери заряженный телефон подальше от подоконника — так до сигнала дойдёт уведомление.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 15. ОРЕНБУРГСКАЯ ОБЛАСТЬ — ОБЩАЯ ============ -->
+<section class="slide" data-title="Оренбургская область">
+  <div class="slide-inner">
+    <div class="section-head">
+      <div>
+        <span class="region-tag">📍 Оренбургская область</span>
+        <h2 class="slide-title" style="margin-top:12px">Знакомство с <span class="grad-text g">нашим регионом</span></h2>
+      </div>
+      <div class="section-num">14</div>
+    </div>
+
+    <div class="split">
+      <div class="stack">
+        <div class="kpi-row">
+          <div class="stat rv" style="--d:.05s"><div class="num grad-text">123 702</div><div class="cap">км² площадь области</div></div>
+          <div class="stat rv" style="--d:.12s"><div class="num grad-text water">1 817</div><div class="cap">тыс. жителей</div></div>
+          <div class="stat rv" style="--d:.19s"><div class="num grad-text earth">34–38°</div><div class="cap">амплитуда температур</div></div>
+          <div class="stat rv" style="--d:.26s"><div class="num grad-text fire">350–450</div><div class="cap">мм осадков в год</div></div>
+        </div>
+
+        <div class="card rv" style="--d:.33s">
+          <h3 style="margin-bottom:11px">Климат — главная особенность</h3>
+          <p class="small" style="margin-bottom:10px">
+            Климат <b>резко континентальный</b>: область далеко от океанов, поэтому здесь очень жарко летом
+            и очень холодно зимой, а перепад температур достигает <b>34–38 °C</b>.
+          </p>
+          <div class="danger-strip">
+            <div class="card" style="padding:12px 14px"><b>☀️ Жарко</b><div class="small">до +40 °C и выше в июле</div></div>
+            <div class="card" style="padding:12px 14px"><b>🥶 Холодно</b><div class="small">до −35 °C зимой</div></div>
+            <div class="card" style="padding:12px 14px"><b>🌾 Мало осадков</b><div class="small">60–70% выпадает летом</div></div>
+          </div>
+        </div>
+
+        <div class="card rv" style="--d:.4s">
+          <h3>Природа и рельеф</h3>
+          <ul class="list" style="margin-top:11px">
+            <li><b>Река Урал</b> — одна из крупнейших рек Европы (2428 км, из них 1164 км в области). Также Сакмара, Илек, Самара</li>
+            <li><b>Озеро Шалкар-Ега-Кара</b> — крупнейший водоём области (9600 га). Знаменитые солёные озёра Соль-Илецка</li>
+            <li>Высшая точка — гора <b>Накас</b> (667 м), низшая — у реки Чаган (27 м)</li>
+            <li><b>Бузулукский бор</b> — крупнейший сосновый лес в лесостепной зоне</li>
+            <li><b>Чернозёмы</b> занимают 79% пашни — почвы очень плодородные, поэтому область — важный аграрный регион</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="stack">
+        <figure class="photo ar-43 kb-in">
+          <img src="assets/img/oren_city.jpg" alt="Мост через реку Урал в Оренбурге" loading="lazy">
+          <figcaption><span class="cap-t">Оренбург: мост через Урал</span><span class="cap-a">A. Shockov · CC BY-SA 2.0</span></figcaption>
+        </figure>
+
+        <div class="grid g2" style="gap:12px">
+          <figure class="photo ar-11 kb-down">
+            <img src="assets/img/oren_steppe.jpg" alt="Буртинская степь в Оренбургской области" loading="lazy">
+            <figcaption><span class="cap-t">Буртинская степь</span><span class="cap-a">A. Svetlov · CC BY 2.0</span></figcaption>
+          </figure>
+          <figure class="photo ar-11 kb-up">
+            <img src="assets/img/salt_lake.jpg" alt="Озеро Шалкар-Ега-Кара" loading="lazy">
+            <figcaption><span class="cap-t">Шалкар-Ега-Кара</span><span class="cap-a">С. Метик · CC BY 3.0</span></figcaption>
+          </figure>
+        </div>
+
+        <figure class="photo ar-219 kb-lr">
+          <img src="assets/img/oren_bridge.jpg" alt="Набережная реки Урал в Оренбурге" loading="lazy">
+          <figcaption><span class="cap-t">Набережная Урала в Оренбурге</span><span class="cap-a">V. Litvinov · CC BY-SA 3.0</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 16. ОРЕНБУРГСКАЯ ОБЛАСТЬ — РИСКИ ============ -->
+<section class="slide" data-title="Природные ЧС Оренбуржья">
+  <div class="slide-inner">
+    <div class="section-head">
+      <div>
+        <span class="region-tag">📍 Оренбургская область</span>
+        <h2 class="slide-title" style="margin-top:12px">Какие стихийные бедствия <span class="grad-text fire">бывают у нас</span></h2>
+      </div>
+      <div class="section-num">15</div>
+    </div>
+
+    <div class="grid g2" style="gap:16px">
+      <div class="card rv" style="--d:.05s">
+        <div class="card-head"><div class="icon-box">🥵</div><div><h3>Засуха и суховеи</h3><span class="small">главная опасность региона</span></div></div>
+        <p class="small">Из-за резко континентального климата осадков мало, а 60–70% выпадает летом. В засуху пересыхают реки и озёра, гибнет урожай, падает уровень грунтовых вод, резко растёт риск пожаров.</p>
+        <div class="risk-bar" style="--lvl:85%"><i></i></div>
+        <div class="small" style="margin-top:5px">Риск для региона: <b class="hl r">очень высокий</b></div>
+      </div>
+
+      <div class="card rv" style="--d:.12s">
+        <div class="card-head"><div class="icon-box">🌪️</div><div><h3>Пыльные и «сальные» бури</h3><span class="small">ветер + сухая почва</span></div></div>
+        <p class="small">Сильный ветер поднимает пыль с распаханных земель — в воздухе стоит плотная буря, падает видимость, уносит верхний плодородный слой. Настоящее «сальное явление» переносит через регион огромные объёмы пыли, иногда с зарубежья.</p>
+        <div class="risk-bar" style="--lvl:75%"><i></i></div>
+        <div class="small" style="margin-top:5px">Риск для региона: <b class="hl r">высокий</b></div>
+      </div>
+
+      <div class="card rv" style="--d:.19s">
+        <div class="card-head"><div class="icon-box">🌊</div><div><h3>Наводнения (половодье)</h3><span class="small">весна: таяние снега + дожди</span></div></div>
+        <p class="small">Весной река Урал, Сакмара, Илек выходят из русла и затапливают прибрежные сёла. Под водой — поля, дороги, мосты и дома. Летние ливни тоже дают резкий подъём воды в балках и оврагах.</p>
+        <div class="risk-bar" style="--lvl:65%"><i></i></div>
+        <div class="small" style="margin-top:5px">Риск для региона: <b class="hl w">заметный</b></div>
+      </div>
+
+      <div class="card rv" style="--d:.26s">
+        <div class="card-head"><div class="icon-box">⛈️</div><div><h3>Грозы, град и ураганы</h3><span class="small">резкие перепады погоды</span></div></div>
+        <p class="small">Летом бывают сильные грозы и <b>крупный град</b>, который бьёт по крышам домов, автомобилям и посевам. Шквалы и ливни ломают деревья и рекламные конструкции, переносят мусор, подтапливают дома.</p>
+        <div class="risk-bar" style="--lvl:70%"><i></i></div>
+        <div class="small" style="margin-top:5px">Риск для региона: <b class="hl w">заметный</b></div>
+      </div>
+
+      <div class="card rv" style="--d:.33s">
+        <div class="card-head"><div class="icon-box">❄️</div><div><h3>Бураны, метели и гололёд</h3><span class="small">зима и межсезонье</span></div></div>
+        <p class="small">Зимой метели и снежные навалы парализуют дороги, закрывают школы. Сильные перепады «оттепель → мороз» дают <b>гололёд и наледь</b>: падают ветки и лёд с крыш, скользкая дорога опасна для авто и пешеходов.</p>
+        <div class="risk-bar" style="--lvl:60%"><i></i></div>
+        <div class="small" style="margin-top:5px">Риск для региона: <b class="hl w">заметный</b></div>
+      </div>
+
+      <div class="card rv" style="--d:.4s">
+        <div class="card-head"><div class="icon-box">⛰️</div><div><h3>Оползни и обвалы</h3><span class="small">склоны Предуралья и Южного Урала</span></div></div>
+        <p class="small">На относительно крутых и застроенных склонах после сильных дождей возможны <b>оплывины и оползни</b> — особенно в Предгорном районе и на хребтах Губерлинские горы, Ирендык. Под угрозой — дачи, дороги, садовые участки.</p>
+        <div class="risk-bar" style="--lvl:45%"><i></i></div>
+        <div class="small" style="margin-top:5px">Риск для региона: <b class="hl">умеренный</b></div>
+      </div>
+    </div>
+
+    <div class="grid g2" style="gap:16px; margin-top:16px">
+      <figure class="photo ar-219 kb-down">
+        <img src="assets/img/drought.jpg" alt="Пересохшая земля во время засухи" loading="lazy">
+        <span class="fx fx-heat"></span>
+        <figcaption><span class="cap-t">Пересохшая почва во время засухи</span><span class="cap-a">A. Pavanello · CC BY-SA 3.0 IT</span></figcaption>
+      </figure>
+      <figure class="photo ar-219 kb-lr">
+        <img src="assets/img/dust.jpg" alt="Пыльная буря" loading="lazy">
+        <span class="fx fx-dust"></span>
+        <figcaption><span class="cap-t">Пыльная буря — «сальное явление»</span><span class="cap-a">Public domain · Wikimedia Commons</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 17. ОРЕНБУРГСКАЯ ОБЛАСТЬ — ПАМЯТКА ============ -->
+<section class="slide" data-title="Памятка для Оренбуржья">
+  <div class="slide-inner">
+    <div class="section-head">
+      <div>
+        <span class="region-tag">📍 Оренбургская область</span>
+        <h2 class="slide-title" style="margin-top:12px">Памятка: <span class="grad-text">что делать</span> в нашем регионе</h2>
+      </div>
+      <div class="section-num">16</div>
+    </div>
+
+    <div class="grid g2" style="gap:14px">
+      <div class="card rv" style="--d:.05s">
+        <h3>🥵 При засухе и жаре</h3>
+        <ul class="list check" style="margin-top:10px">
+          <li>Пей воду <b>медленно, но часто</b>, избегай перегрева в 12–16 часов</li>
+          <li>Не разжигай костёр в степи и лесополосах — трава сухая, вспыхнет мгновенно</li>
+          <li>Следи за прогнозом и <b>уровнем воды в реке</b></li>
+          <li>Помогай пострадавшим от засухи хозяйствам и не затапливай водой поля</li>
+        </ul>
+      </div>
+
+      <div class="card rv" style="--d:.12s">
+        <h3>🌪️ При пыльной буре</h3>
+        <ul class="list check" style="margin-top:10px">
+          <li>Закрой <b>окна и форточки</b>, завесь плотную ткань</li>
+          <li>Защити органы дыхания: маска, марля, влажный платок</li>
+          <li>В автомобиле — включи режим циркуляции воздуха, <b>не открывай окна</b></li>
+          <li>Не выходи на улицу во время самой бури, особенно если плохо видишь</li>
+        </ul>
+      </div>
+
+      <div class="card rv" style="--d:.19s">
+        <h3>🌊 При наводнении</h3>
+        <ul class="list check" style="margin-top:10px">
+          <li>Не выходи на размытую дорогу и <b>не переходи проезжую часть</b> по колено в воде</li>
+          <li>Отключи газ и электричество, если это безопасно</li>
+          <li>Поднимись на верхний этаж или на возвышенность</li>
+          <li>Слушай сирены: в Оренбуржье есть <b>система оповещения</b> о наводнениях</li>
+        </ul>
+      </div>
+
+      <div class="card rv" style="--d:.26s">
+        <h3>⛈️ При грозе, граде и буране</h3>
+        <ul class="list check" style="margin-top:10px">
+          <li>Спрячься в здание при граде и грозе, <b>не стой под одиноким деревом</b></li>
+          <li>При буране не выходи на дорогу — <b>метель за blinding</b> сбивает с пути</li>
+          <li>Держи в запасе тёплую одежду, еду и заряженный телефон</li>
+          <li>Если падает лёд с крыш и деревьев — <b>не стой у зданий и машин</b></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card rv" style="--d:.33s; margin-top:16px; border-color: rgba(52,211,153,.35)">
+      <div class="grid g3">
+        <div>
+          <h3 style="margin-bottom:8px">🔎 Знай наизусть</h3>
+          <ul class="list" style="font-size:13px">
+            <li>Адрес ближайшего <b>укрытия и эвакуационного пункта</b></li>
+            <li>Местные <b>балки и овраги</b> — в ливень туда не спускаться</li>
+            <li>Расположение <b>мостов через Урал</b> — в половодье часть закрывают</li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="margin-bottom:8px">📦 Тревожный рюкзак</h3>
+          <ul class="list" style="font-size:13px">
+            <li>Вода, еда, аптечка, фонарь</li>
+            <li>Документы и заряженный <b>powerbank</b></li>
+            <li>Тёплый свитер и плёнка для окон от пыли</li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="margin-bottom:8px">📞 Экстренные номера</h3>
+          <ul class="list" style="font-size:13px">
+            <li><b>112</b> — единая служба спасения</li>
+            <li>Работает <b>без SIM-карты и денег</b> на счёте</li>
+            <li>Сообщи точный адрес, район и что случилось</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <figure class="photo ar-219 kb-lr" style="margin-top:16px">
+      <img src="assets/img/oren_field.jpg" alt="Пшеничное поле в Оренбургской области" loading="lazy">
+      <span class="fx fx-heat"></span>
+      <figcaption><span class="cap-t">Чернозёмные поля Оренбуржья — их нужно беречь от эрозии</span><span class="cap-a">Iohann · CC BY 3.0</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ 18. ПРОГНОЗИРОВАНИЕ ============ -->
 <section class="slide" data-title="Как предсказывают бедствия">
   <div class="slide-inner">
     <div class="section-head">
@@ -1604,10 +1358,10 @@
         <span class="eyebrow"><span class="dot"></span> Наука спасает жизни</span>
         <h2 class="slide-title">Как люди <span class="grad-text">предсказывают</span> стихию</h2>
       </div>
-      <div class="section-num">13</div>
+      <div class="section-num">17</div>
     </div>
 
-    <div class="grid g2" style="gap:20px">
+    <div class="split">
       <div class="stack">
         <div class="card rv" style="--d:.05s">
           <h3>🔬 Мониторинг: как это работает</h3>
@@ -1619,6 +1373,19 @@
             <li><b>Камеры наблюдения и датчики</b> на вулканах, склонах, реках, озёрах</li>
           </ul>
         </div>
+
+        <div class="grid g2" style="gap:12px">
+          <figure class="photo ar-11 kb-up">
+            <img src="assets/img/earthquake3.jpg" alt="Мониторинг разрушений после землетрясения" loading="lazy">
+            <figcaption><span class="cap-t">Мониторинг ЧС</span><span class="cap-a">DVIDSHUB · CC BY 2.0</span></figcaption>
+          </figure>
+          <figure class="photo ar-11 kb-down">
+            <img src="assets/img/storm.jpg" alt="Радарное наблюдение шторма" loading="lazy">
+            <span class="fx fx-flash"></span>
+            <figcaption><span class="cap-t">Радар следит за фронтом</span><span class="cap-a">Yann · CC BY-SA 4.0</span></figcaption>
+          </figure>
+        </div>
+
         <div class="card rv" style="--d:.12s">
           <h3>⚡ Система оповещения</h3>
           <p class="small" style="margin-top:8px">
@@ -1629,56 +1396,24 @@
       </div>
 
       <div class="stack">
-        <svg class="scene" viewBox="0 0 480 300" role="img" aria-label="Анимация: радар и сейсмограф отслеживают опасность">
-          <rect width="480" height="300" fill="#060b18"/>
-          <g class="scan-line" opacity=".1"><rect x="0" y="0" width="480" height="2" fill="#22d3ee"/></g>
-
-          <!-- radar -->
-          <g transform="translate(130,140)">
-            <circle r="96" fill="rgba(34,211,238,.05)" stroke="#1e3a6b" stroke-width="1.5"/>
-            <circle r="68" fill="none" stroke="#1e3a6b" stroke-width="1.2"/>
-            <circle r="40" fill="none" stroke="#1e3a6b" stroke-width="1.2"/>
-            <line x1="-96" y1="0" x2="96" y2="0" stroke="#1e3a6b" stroke-width="1.2"/>
-            <line x1="0" y1="-96" x2="0" y2="96" stroke="#1e3a6b" stroke-width="1.2"/>
-            <g class="radar-sweep" style="transform-origin:0 0">
-              <path d="M0 0 L0 -96 A96 96 0 0 1 68 -68 Z" fill="url(#sweep)" opacity=".5"/>
-              <line x1="0" y1="0" x2="0" y2="-96" stroke="#22d3ee" stroke-width="2.5"/>
-            </g>
-            <defs>
-              <linearGradient id="sweep" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#22d3ee" stop-opacity="0"/><stop offset="1" stop-color="#22d3ee" stop-opacity=".9"/></linearGradient>
-            </defs>
-            <g>
-              <circle cx="30" cy="-52" r="4" fill="#fb7185"><animate attributeName="r" values="4;14;4" dur="3.4s" repeatCount="indefinite"/><animate attributeName="opacity" values=".9;0;.9" dur="3.4s" repeatCount="indefinite"/></circle>
-              <circle cx="-58" cy="34" r="4" fill="#fbbf24"><animate attributeName="r" values="4;14;4" dur="3.4s" begin="1.6s" repeatCount="indefinite"/><animate attributeName="opacity" values=".9;0;.9" dur="3.4s" begin="1.6s" repeatCount="indefinite"/></circle>
-              <circle cx="62" cy="48" r="4" fill="#a78bfa"><animate attributeName="r" values="4;14;4" dur="3.4s" begin=".8s" repeatCount="indefinite"/><animate attributeName="opacity" values=".9;0;.9" dur="3.4s" begin=".8s" repeatCount="indefinite"/></circle>
-              <circle cx="-14" cy="-80" r="3.5" fill="#fb7185"><animate attributeName="r" values="3.5;12;3.5" dur="3.4s" begin="2.3s" repeatCount="indefinite"/><animate attributeName="opacity" values=".9;0;.9" dur="3.4s" begin="2.3s" repeatCount="indefinite"/></circle>
-            </g>
-            <text x="-40" y="120" font-family="Manrope" font-size="11" font-weight="800" fill="#64748b">МЕТЕОРАДИОЛОГИЧЕСКИЙ РАДАР</text>
-          </g>
-
-          <!-- seismograph -->
-          <g transform="translate(310,120)">
-            <rect x="-62" y="-52" width="124" height="112" rx="12" fill="rgba(255,255,255,.05)" stroke="rgba(251,113,133,.4)"/>
-            <text x="0" y="-32" font-family="Manrope" font-size="10.5" font-weight="800" fill="#fca5a5" text-anchor="middle">СЕЙСМОГРАФ</text>
-            <path d="M-48 -6 q12 -30 24 0 t24 0 t24 0 t24 0" stroke="#fb7185" stroke-width="2" fill="none" class="wave-move"/>
-            <line x1="-48" y1="24" x2="48" y2="24" stroke="rgba(255,255,255,.14)" stroke-width="1"/>
-            <g fill="#22d3ee">
-              <circle cx="-30" cy="-6" r="3.5" class="text-anim"/>
-            </g>
-            <text x="0" y="44" font-family="Manrope" font-size="9.5" font-weight="800" fill="#64748b" text-anchor="middle">ФИКСАЦИЯ ТОЛЧКОВ 24/7</text>
-          </g>
-          <g transform="translate(310,242)">
-            <rect x="-62" y="-14" width="124" height="30" rx="9" fill="rgba(34,211,238,.12)" stroke="rgba(34,211,238,.35)"/>
-            <text x="0" y="5" font-family="Manrope" font-size="10" font-weight="800" fill="#67e8f9" text-anchor="middle">ОПОВЕЩЕНИЕ ЗА МИНУТЫ</text>
-          </g>
-        </svg>
-        <div class="scene-cap">Радар и сейсмограф работают круглосуточно</div>
+        <figure class="photo ar-43 kb-in">
+          <img src="assets/img/hurricane2.jpg" alt="Спутниковый мониторинг урагана" loading="lazy">
+          <span class="fx fx-water"></span>
+          <figcaption><span class="cap-t">Спутник отслеживает ураган в реальном времени</span><span class="cap-a">NASA · Public domain</span></figcaption>
+        </figure>
+        <div class="card rv" style="--d:.2s">
+          <h3>Почему прогноз важен</h3>
+          <p class="small" style="margin-top:8px">
+            Точно предсказать землетрясение учёные пока не могут, но <b>за 1–3 дня</b> штормовое предупреждение,
+            прогноз паводка и оповещение о цунами реально спасают тысячи жизней.
+          </p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 15. ШКАЛЫ ОПАСНОСТИ / КЛАССИФИКАЦИЯ ПО СРОЧНОСТИ ============ -->
+<!-- ============ 19. УРОВНИ ОПАСНОСТИ ============ -->
 <section class="slide" data-title="Уровни опасности">
   <div class="slide-inner">
     <div class="section-head">
@@ -1686,7 +1421,7 @@
         <span class="eyebrow"><span class="dot"></span> Классификация по опасности</span>
         <h2 class="slide-title">Насколько <span class="grad-text fire">опасно</span>: уровни ЧС</h2>
       </div>
-      <div class="section-num">14</div>
+      <div class="section-num">18</div>
     </div>
 
     <div class="table-wrap rv" style="--d:.05s">
@@ -1731,7 +1466,7 @@
   </div>
 </section>
 
-<!-- ============ 16. ЗАЩИТА ============ -->
+<!-- ============ 20. ЗАЩИТА ============ -->
 <section class="slide" data-title="Как защититься">
   <div class="slide-inner">
     <div class="section-head">
@@ -1739,7 +1474,7 @@
         <span class="eyebrow"><span class="dot"></span> Самое важное</span>
         <h2 class="slide-title">🛡️ Как <span class="grad-text g">защититься</span> от стихии</h2>
       </div>
-      <div class="section-num">15</div>
+      <div class="section-num">19</div>
     </div>
 
     <div class="grid g3">
@@ -1796,7 +1531,7 @@
   </div>
 </section>
 
-<!-- ============ 17. УРОКИ ПРОШЛОГО / НАУКА ============ -->
+<!-- ============ 21. УРОКИ ПРОШЛОГО ============ -->
 <section class="slide" data-title="Уроки прошлого">
   <div class="slide-inner">
     <div class="section-head">
@@ -1804,7 +1539,7 @@
         <span class="eyebrow"><span class="dot"></span> Главные выводы</span>
         <h2 class="slide-title">Что нас научили <span class="grad-text">катастрофы</span></h2>
       </div>
-      <div class="section-num">16</div>
+      <div class="section-num">20</div>
     </div>
 
     <div class="split">
@@ -1816,7 +1551,7 @@
             <li><b>1974, Узбекистан:</b> ураган и провал Амударьи привели к созданию системы противопаводковых плотин</li>
             <li><b>1985, Мексика:</b> землетрясение — в училищах начали тренировать детей</li>
             <li><b>2004, Индийский океан:</b> цунами унёс 227 000 жизней → в Индии и Японии построили системы предупреждения</li>
-            <li><b>2011, Япония:</b> после цунами Фукусимы Япония перестроила все здания, пароли, и систему оповещения</li>
+            <li><b>2011, Япония:</b> после цунами Фукусимы Япония перестроила все здания, парси и систему оповещения</li>
             <li><b>2016, Зебрюг (Бельгия):</b> шквал сорвал крыши — в Европе усилили требования к креплению кровли</li>
           </ul>
         </div>
@@ -1831,6 +1566,11 @@
       </div>
 
       <div class="stack">
+        <figure class="photo ar-43 kb-in">
+          <img src="assets/img/rescue.jpg" alt="Спасатели МЧС России" loading="lazy">
+          <span class="fx fx-alert"></span>
+          <figcaption><span class="cap-t">Спасатели работают в любой ЧС</span><span class="cap-a">В. Веленгурин · CC BY 4.0</span></figcaption>
+        </figure>
         <div class="card rv" style="--d:.1s">
           <h3>Сколько детей может спасти подготовка</h3>
           <div class="grid g2" style="gap:12px">
@@ -1842,7 +1582,7 @@
           <h3>Правило для каждого</h3>
           <ul class="list check" style="margin-top:11px">
             <li>Знай, где <b>выходы и укрытия</b> в своём доме, школе</li>
-            <li>Держи <b>трекожный рюкзак</b> у входа — он может спасти жизнь</li>
+            <li>Держи <b>тревожный рюкзак</b> у входа — он может спасти жизнь</li>
             <li>Всегда выполняй <b>сигналы тревоги</b> — это не «учебная шутка»</li>
             <li>Расскажи о ЧС родителям и друзьям</li>
             <li>Не проходи мимо чужой беды — <b>помощь важнее любопытства</b></li>
@@ -1853,7 +1593,7 @@
   </div>
 </section>
 
-<!-- ============ 18. ТЕСТ ============ -->
+<!-- ============ 22. ТЕСТ ============ -->
 <section class="slide" data-title="Проверь себя">
   <div class="slide-inner">
     <div class="section-head">
@@ -1861,12 +1601,12 @@
         <span class="eyebrow"><span class="dot"></span> Проверь себя</span>
         <h2 class="slide-title">🧠 Мини-тест по теме</h2>
       </div>
-      <div class="section-num">17</div>
+      <div class="section-num">21</div>
     </div>
 
     <div class="card quiz-card" id="quizCard">
       <div class="row" style="justify-content:space-between;margin-bottom:8px">
-        <span class="chip">Вопрос <b id="qNum">1</b> из <b id="qTotal">6</b></span>
+        <span class="chip">Вопрос <b id="qNum">1</b> из <b id="qTotal">9</b></span>
         <span class="chip">Счёт: <b id="qScore">0</b></span>
       </div>
       <div id="qText" class="q-text"></div>
@@ -1887,7 +1627,101 @@
   </div>
 </section>
 
-<!-- ============ 19. ИТОГИ ============ -->
+<!-- ============ 23. ИСТОЧНИКИ ФОТО ============ -->
+<section class="slide" data-title="Источники фотографий">
+  <div class="slide-inner">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow"><span class="dot"></span> Лицензии и авторы</span>
+        <h2 class="slide-title">Источники <span class="grad-text">фотографий</span></h2>
+      </div>
+      <div class="section-num">22</div>
+    </div>
+
+    <p class="small" style="margin-bottom:14px">
+      Все фотографии в презентации взяты из Wikimedia Commons и распространяются на свободных лицензиях
+      (Public domain, CC BY, CC BY-SA). Наведи на фото и нажми, чтобы увеличить.
+      Благодарим авторов за возможность использовать их материалы.
+    </p>
+
+    <div class="gallery">
+      <figure class="photo">
+        <img src="assets/img/tsunami.jpg" alt="Цунами в Японии" loading="lazy">
+        <figcaption><span class="cap-t">Цунами, Ридзенентаката</span><span class="cap-a">US Navy · Public domain</span></figcaption>
+      </figure>
+      <figure class="photo">
+        <img src="assets/img/earthquake2.jpg" alt="Землетрясение Лома-Приета" loading="lazy">
+        <figcaption><span class="cap-t">Землетрясение, 1989</span><span class="cap-a">FEMA · Public domain</span></figcaption>
+      </figure>
+      <figure class="photo">
+        <img src="assets/img/tornado.jpg" alt="Смерч" loading="lazy">
+        <figcaption><span class="cap-t">Смерч, 1965</span><span class="cap-a">P. Huffman · Public domain</span></figcaption>
+      </figure>
+      <figure class="photo">
+        <img src="assets/img/hurricane.jpg" alt="Ураган Сэнди" loading="lazy">
+        <figcaption><span class="cap-t">Ураган Сэнди</span><span class="cap-a">NASA Goddard · Public domain</span></figcaption>
+      </figure>
+      <figure class="photo">
+        <img src="assets/img/volcano.jpg" alt="Извержение вулкана" loading="lazy">
+        <figcaption><span class="cap-t">Стромболи</span><span class="cap-a">W. Beyer · CC BY-SA 3.0</span></figcaption>
+      </figure>
+      <figure class="photo">
+        <img src="assets/img/flood2.jpg" alt="Наводнение в Праге" loading="lazy">
+        <figcaption><span class="cap-t">Прага, наводнение</span><span class="cap-a">Wikimedia · CC BY 3.0</span></figcaption>
+      </figure>
+      <figure class="photo">
+        <img src="assets/img/landslide.jpg" alt="Оползень" loading="lazy">
+        <figcaption><span class="cap-t">Оползень, Пакистан</span><span class="cap-a">Wikimedia · CC BY-SA 3.0</span></figcaption>
+      </figure>
+      <figure class="photo">
+        <img src="assets/img/wildfire.jpg" alt="Лесной пожар" loading="lazy">
+        <figcaption><span class="cap-t">Лесной пожар</span><span class="cap-a">anagh · CC BY-SA 3.0</span></figcaption>
+      </figure>
+      <figure class="photo">
+        <img src="assets/img/hail.jpg" alt="Град" loading="lazy">
+        <figcaption><span class="cap-t">Градовая буря</span><span class="cap-a">NOAA · Public domain</span></figcaption>
+      </figure>
+      <figure class="photo">
+        <img src="assets/img/rescue.jpg" alt="МЧС России" loading="lazy">
+        <figcaption><span class="cap-t">МЧС России</span><span class="cap-a">В. Веленгурин · CC BY 4.0</span></figcaption>
+      </figure>
+      <figure class="photo">
+        <img src="assets/img/oren_city.jpg" alt="Оренбург" loading="lazy">
+        <figcaption><span class="cap-t">Оренбург, мост через Урал</span><span class="cap-a">A. Shockov · CC BY-SA 2.0</span></figcaption>
+      </figure>
+      <figure class="photo">
+        <img src="assets/img/oren_steppe.jpg" alt="Оренбургская степь" loading="lazy">
+        <figcaption><span class="cap-t">Буртинская степь</span><span class="cap-a">A. Svetlov · CC BY 2.0</span></figcaption>
+      </figure>
+      <figure class="photo">
+        <img src="assets/img/salt_lake.jpg" alt="Шалкар-Ега-Кара" loading="lazy">
+        <figcaption><span class="cap-t">Шалкар-Ега-Кара</span><span class="cap-a">С. Метик · CC BY 3.0</span></figcaption>
+      </figure>
+      <figure class="photo">
+        <img src="assets/img/dust.jpg" alt="Пыльная буря" loading="lazy">
+        <figcaption><span class="cap-t">Пыльная буря</span><span class="cap-a">Public domain</span></figcaption>
+      </figure>
+      <figure class="photo">
+        <img src="assets/img/drought.jpg" alt="Засуха" loading="lazy">
+        <figcaption><span class="cap-t">Засуха, сухая почва</span><span class="cap-a">A. Pavanello · CC BY-SA 3.0</span></figcaption>
+      </figure>
+      <figure class="photo">
+        <img src="assets/img/baikal.jpg" alt="Байкал" loading="lazy">
+        <figcaption><span class="cap-t">Озеро Байкал</span><span class="cap-a">S. Pesterev · CC BY-SA 4.0</span></figcaption>
+      </figure>
+      <figure class="photo">
+        <img src="assets/img/volcano_ru.jpg" alt="Камчатка" loading="lazy">
+        <figcaption><span class="cap-t">Ключевская сопка</span><span class="cap-a">NASA · Public domain</span></figcaption>
+      </figure>
+      <figure class="photo">
+        <img src="assets/img/oren_field.jpg" alt="Поле в Оренбуржье" loading="lazy">
+        <figcaption><span class="cap-t">Поля Оренбуржья</span><span class="cap-a">Iohann · CC BY 3.0</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 24. ИТОГИ ============ -->
 <section class="slide" data-title="Итоги">
   <div class="slide-inner">
     <div class="hero-wrap">
@@ -1898,46 +1732,37 @@
             Что нужно <span class="grad-text">запомнить</span>
           </h2>
           <div class="stack" style="margin-top:18px; gap:12px">
-            <div class="card"><b>1.</b> Природные ЧС — неконтролируемые стихийные бедствия: <span class="hl">землетрясения, цунами, вулканы, ураганы, торнадо, наводнения, оползни, пожары, грозы</span></div>
+            <div class="card"><b>1.</b> Природные ЧС — неконтролируемые стихийные бедствия: <span class="hl">землетрясения, цунами, вулканы, ураганы, торнадо, наводнения, оползни, пожары</span></div>
             <div class="card"><b>2.</b> Главная опасность — не только разрушения, но и <span class="hl r">вторичные бедствия</span>: пожары, оползни, наводнения после землетрясения</div>
-            <div class="card"><b>3.</b> Большинство ЧС <span class="hl w">предсказать точно нельзя</span>, но можно <span class="hl">снизить их последствия</span> — знанием и подготовкой</div>
-            <div class="card"><b>4.</b> В любой ЧС главное — <span class="hl g">сохранить жизнь и здоровье</span>, а потом имущество. И <span class="hl g">выполнять сигналы тревоги</span></div>
+            <div class="card"><b>3.</b> <span class="hl g">В России и Оренбуржье</span> главные риски — засуха, пыльные бури, наводнения, грозы с градом, бураны и оползни</div>
+            <div class="card"><b>4.</b> Большинство ЧС <span class="hl w">предсказать точно нельзя</span>, но можно <span class="hl">снизить их последствия</span> — знанием и подготовкой</div>
+            <div class="card"><b>5.</b> В любой ЧС главное — <span class="hl g">сохранить жизнь и здоровье</span>, а потом имущество. И <span class="hl g">выполнять сигналы тревоги</span></div>
           </div>
         </div>
 
         <div class="stack">
-          <svg class="scene" viewBox="0 0 440 300" role="img" aria-label="Щит безопасности">
-            <defs>
-              <linearGradient id="shield" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#a78bfa"/></linearGradient>
-              <radialGradient id="shGlow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#22d3ee" stop-opacity=".45"/><stop offset="1" stop-color="#22d3ee" stop-opacity="0"/></radialGradient>
-            </defs>
-            <rect width="440" height="300" fill="#060b18"/>
-            <circle cx="220" cy="150" r="130" fill="url(#shGlow)"/>
-            <g class="pulse-ring" style="transform-origin:220px 150px"><circle cx="220" cy="150" r="60" fill="none" stroke="#22d3ee" stroke-width="2" opacity=".5"/></g>
-            <g class="pulse-ring" style="transform-origin:220px 150px;animation-delay:1.3s"><circle cx="220" cy="150" r="60" fill="none" stroke="#a78bfa" stroke-width="2" opacity=".4"/></g>
-            <path d="M220 46 L320 82 v74 c0 52 -40 82 -100 98 c-60 -16 -100 -46 -100 -98 V82 Z" fill="url(#shield)" opacity=".9"/>
-            <path d="M220 46 L320 82 v74 c0 52 -40 82 -100 98 c-60 -16 -100 -46 -100 -98 V82 Z" fill="none" stroke="#e0f2fe" stroke-width="2" opacity=".6"/>
-            <path d="M182 148 l26 26 l52 -56" stroke="#04060d" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            <text x="220" y="288" font-family="Manrope" font-size="13" font-weight="800" fill="#a5f3fc" text-anchor="middle">ЗНАНИЯ = ЗАЩИТА</text>
-          </svg>
-          <div class="scene-cap">Твоя безопасность зависит от подготовки</div>
-          <div class="card" style="margin-top:6px">
+          <figure class="photo ar-43 kb-in">
+            <img src="assets/img/oren_city.jpg" alt="Оренбург на закате" loading="lazy">
+            <figcaption><span class="cap-t">Берегите природу, которая вас окружает</span><span class="cap-a">A. Shockov · CC BY-SA 2.0</span></figcaption>
+          </figure>
+          <div class="card">
             <h3 style="margin-bottom:9px">Экстренные номера</h3>
             <div class="row">
               <span class="chip">112 <b>единая служба</b></span>
               <span class="chip">101 <b>пожарные</b></span>
               <span class="chip">102 <b>полиция</b></span>
               <span class="chip">103 <b>скорая</b></span>
-              <span class="chip">104 <b> газ / аварии</b></span>
+              <span class="chip">104 <b>газ / аварии</b></span>
             </div>
             <p class="small" style="margin-top:10px">Работает даже без SIM-карты и без денег на счёте.</p>
           </div>
+          <p class="small" style="margin-top:4px">
+            Источники фактов: данные МЧС России, ООН (UNDRR), USGS, NOAA, Всемирная метеорологическая организация,
+            данные по Оренбургской области, учебные материалы по ОБЗР. Фотографии — Wikimedia Commons (свободные лицензии).
+            Презентация подготовлена для урока ОБЗР.
+          </p>
         </div>
       </div>
-      <p class="small" style="margin-top:20px; text-align:center">
-        Источники: данные МЧС России, ООН (UNDRR), USGS, NOAA, Всемирная метеорологическая организация, учебные материалы по ОБЗР.<br>
-        Презентация подготовлена для урока ОБЗР · все иллюстрации — авторская векторная графика (SVG).
-      </p>
     </div>
   </div>
 </section>

@@ -169,7 +169,43 @@
   document.addEventListener('keydown', hideHint);
   btnNext.addEventListener('click', hideHint);
 
-  /* ---------- 5. Мини-тест ---------- */
+  /* ---------- 5. Лайтбокс для фотографий ---------- */
+  var lightbox = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lbImg');
+  var lbCap = document.getElementById('lbCap');
+
+  function openLightbox(fig) {
+    var img = fig.querySelector('img');
+    var cap = fig.querySelector('figcaption');
+    if (!img) return;
+    lbImg.src = img.getAttribute('src');
+    lbImg.alt = img.alt || '';
+    lbCap.innerHTML = cap ? cap.innerHTML : '';
+    lightbox.classList.add('is-open');
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('is-open');
+    lbImg.src = '';
+  }
+
+  document.addEventListener('click', function (e) {
+    var fig = e.target.closest ? e.target.closest('.photo') : null;
+    if (!fig) return;
+    if (lightbox.contains(e.target)) { closeLightbox(); return; }
+    openLightbox(fig);
+  });
+
+  document.getElementById('lbClose').addEventListener('click', closeLightbox);
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && lightbox.classList.contains('is-open')) {
+      e.preventDefault();
+      closeLightbox();
+    }
+  });
+
+  /* ---------- 6. Мини-тест ---------- */
   var QUESTIONS = [
     {
       q: 'Что такое цунами и чем оно опасно для человека?',
@@ -236,6 +272,39 @@
       ],
       a: 2,
       why: 'Жизнь человека невосполнима, а имущество — нет. И самопомощь: позвонить 112, оценить обстановку, помочь пострадавшим.'
+    },
+    {
+      q: 'Какая природная опасность для Оренбургской области наиболее характерна?',
+      opts: [
+        'Цунами',
+        'Засуха, суховеи и пыльные бури',
+        'Вулканическая активность',
+        'Постоянные смерчи'
+      ],
+      a: 1,
+      why: 'Климат Оренбуржья резко континентальный: осадков мало, а летом выпадает большая их часть. Поэтому засуха, суховеи и пыльные бури — главные природные риски региона.'
+    },
+    {
+      q: 'Сколько осадков в среднем выпадает в Оренбургской области за год?',
+      opts: [
+        '350–450 мм',
+        '1000–1200 мм',
+        '50–100 мм',
+        '2000 мм и более'
+      ],
+      a: 0,
+      why: 'Годовая сумма осадков — от 450 мм на северо-западе до 350 мм на юге и юго-востоке области. 60–70% приходится на тёплый период, поэтому летом бывают засухи.'
+    },
+    {
+      q: 'Какая река протекает по Оренбургской области?',
+      opts: [
+        'Волга',
+        'Енисей',
+        'Урал',
+        'Лена'
+      ],
+      a: 2,
+      why: 'Урал — одна из крупнейших рек европейской части России (2428 км), из них 1164 км проходит по Оренбургской области. Также здесь текут Сакмара, Илек и Самара.'
     }
   ];
 
@@ -326,7 +395,7 @@
 
   renderQuestion();
 
-  /* ---------- 6. Старт ---------- */
+  /* ---------- 7. Старт ---------- */
   slides[0].classList.add('is-active');
   paint();
 

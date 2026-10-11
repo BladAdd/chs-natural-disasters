@@ -1,0 +1,266 @@
+{
+  "earthquake": {
+    "file": "assets/img/earthquake.jpg",
+    "title": "Office Building Moorhouse Ave",
+    "author": "Nate Cull",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File%3AOffice%20Building%20Moorhouse%20Ave.jpg",
+    "bytes": 382140
+  },
+  "earthquake2": {
+    "file": "assets/img/earthquake2.jpg",
+    "title": "Loma prieta earthquake fema1",
+    "author": "FEMA News Photo",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File%3ALoma%20prieta%20earthquake%20fema1.jpg",
+    "bytes": 660151
+  },
+  "tsunami": {
+    "file": "assets/img/tsunami.jpg",
+    "title": "US Navy 110315-N-IC111-592 - Tsunami damage of Rikuzentakata",
+    "author": "U.S. Navy photo by Mass Communication Specialist 3rd Class Alexander Tidd",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File%3AUS%20Navy%20110315-N-IC111-592%20-%20Tsunami%20damage%20of%20Rikuzentakata.jpg",
+    "bytes": 1272858
+  },
+  "tsunami2": {
+    "file": "assets/img/tsunami2.jpg",
+    "title": "2011 tsunami wave height",
+    "author": "NOAA",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File%3A2011%20tsunami%20wave%20height.jpg",
+    "bytes": 319047
+  },
+  "tornado": {
+    "file": "assets/img/tornado.jpg",
+    "title": "1965 Elkhart Double Tornado-Palm Sunday",
+    "author": "Paul Huffman (d. 2014)[1]",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File%3A1965%20Elkhart%20Double%20Tornado-Palm%20Sunday.jpg",
+    "bytes": 1562186
+  },
+  "hurricane": {
+    "file": "assets/img/hurricane.jpg",
+    "title": "Satellite View of Hurricane Sandy on Oct. 29 (8134779156)",
+    "author": "NASA Goddard Space Flight Center from Greenbelt, MD, USA",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File%3ASatellite%20View%20of%20Hurricane%20Sandy%20on%20Oct.%2029%20(8134779156).jpg",
+    "bytes": 908875
+  },
+  "hurricane2": {
+    "file": "assets/img/hurricane2.jpg",
+    "title": "Dennis 2005-07-07 1550Z",
+    "author": "NASA image courtesy Jeff Schmaltz, MODIS Land Rapid Response Team at NASA GSFC",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File%3ADennis%202005-07-07%201550Z.jpg",
+    "bytes": 1267944
+  },
+  "volcano": {
+    "file": "assets/img/volcano.jpg",
+    "title": "Stromboli Eruption",
+    "author": "Wolfgang Beyer",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File%3AStromboli%20Eruption.jpg",
+    "bytes": 373346
+  },
+  "volcano2": {
+    "file": "assets/img/volcano2.jpg",
+    "title": "Ash plume from eruption of Chaiten volcano2",
+    "author": "NASA",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File%3AAsh%20plume%20from%20eruption%20of%20Chaiten%20volcano2.jpg",
+    "bytes": 802236
+  },
+  "flood": {
+    "file": "assets/img/flood.jpg",
+    "title": "Providing clean water and flood-resistant shelter in Sindh (5950788649)",
+    "author": "DFID - UK Department for International Development",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File%3AProviding%20clean%20water%20and%20flood-resistant%20shelter%20in%20Sindh%20(5950788649).jpg",
+    "bytes": 622665
+  },
+  "flood2": {
+    "file": "assets/img/flood2.jpg",
+    "title": "Praha, Bubeneč, Stromovka, povodeň 2002",
+    "author": "I would appreciate being notified if you use my work outside Wikimedia. More of my work ca",
+    "license": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File%3APraha%2C%20Bubene%C4%8D%2C%20Stromovka%2C%20povode%C5%88%202002.JPG",
+    "bytes": 954631
+  },
+  "landslide": {
+    "file": "assets/img/landslide.jpg",
+    "title": "Landslide on Karakoram Highway in Pakistan",
+    "author": "",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File%3ALandslide%20on%20Karakoram%20Highway%20in%20Pakistan.jpg",
+    "bytes": 410581
+  },
+  "wildfire": {
+    "file": "assets/img/wildfire.jpg",
+    "title": "Eucalyptus forest fire, Madeira, Portugal, 3 July 2011 - panoramio (2)",
+    "author": "anagh",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File%3AEucalyptus%20forest%20fire%2C%20Madeira%2C%20Portugal%2C%203%20July%202011%20-%20panoramio%20(2).jpg",
+    "bytes": 499285
+  },
+  "wildfire2": {
+    "file": "assets/img/wildfire2.jpg",
+    "title": "Black Forest Fire, U.S. Army 1",
+    "author": "The U.S. Army",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File%3ABlack%20Forest%20Fire%2C%20U.S.%20Army%201.jpg",
+    "bytes": 760291
+  },
+  "storm": {
+    "file": "assets/img/storm.jpg",
+    "title": "Thunderstorm in Annemasse, France",
+    "author": "Yann (talk)",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File%3AThunderstorm%20in%20Annemasse%2C%20France.jpg",
+    "bytes": 86198
+  },
+  "hail": {
+    "file": "assets/img/hail.jpg",
+    "title": "Hailstorm",
+    "author": "NOAA Photo Library, NOAA Central Library; OAR/ERL/National Severe Storms Laboratory (NSSL)",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File%3AHailstorm.jpg",
+    "bytes": 2385868
+  },
+  "blizzard": {
+    "file": "assets/img/blizzard.jpg",
+    "title": "William Hahn - Snowstorms in the Sierras, 1876",
+    "author": "Carl Wilhelm Hahn",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File%3AWilliam%20Hahn%20-%20Snowstorms%20in%20the%20Sierras%2C%201876.jpg",
+    "bytes": 485850
+  },
+  "oren_steppe": {
+    "file": "assets/img/oren_steppe.jpg",
+    "title": "Burtinskaya-steppe-orenburg-oblast-october-2014",
+    "author": "Artem Svetlov",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File%3ABurtinskaya-steppe-orenburg-oblast-october-2014.jpg",
+    "bytes": 1372552
+  },
+  "oren_city": {
+    "file": "assets/img/oren_city.jpg",
+    "title": "Orenburg Ural bridge frontview",
+    "author": "Alexey Shockov [https://www.flickr.com/people/alexeyshockov/] from Russia",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File%3AOrenburg%20Ural%20bridge%20frontview.jpg",
+    "bytes": 472361
+  },
+  "oren_ural": {
+    "file": "assets/img/oren_ural.jpg",
+    "title": "Ural River by Novouralsk",
+    "author": "Vladdie Litvinov",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File%3AUral%20River%20by%20Novouralsk.jpg",
+    "bytes": 671988
+  },
+  "drought": {
+    "file": "assets/img/drought.jpg",
+    "title": "\" 13 - ITALY - texture - ground field dry",
+    "author": "Andrea Pavanello, Milano",
+    "license": "CC BY-SA 3.0 it",
+    "source": "https://commons.wikimedia.org/wiki/File%3A%22%2013%20-%20ITALY%20-%20texture%20-%20ground%20field%20dry.jpg",
+    "bytes": 668411
+  },
+  "wheat": {
+    "file": "assets/img/wheat.jpg",
+    "title": "The industries of Russia (1893) prevailing crop production",
+    "author": "Internet Archive Book Images",
+    "license": "No restrictions",
+    "source": "https://commons.wikimedia.org/wiki/File%3AThe%20industries%20of%20Russia%20(1893)%20prevailing%20crop%20production.jpg",
+    "bytes": 1015390
+  },
+  "flood3": {
+    "file": "assets/img/flood3.jpg",
+    "title": "Mohawk Valley flood relief 130705-Z-OQ455-003",
+    "author": "Sgt. 1st Class Raymond Drumsta",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File%3AMohawk%20Valley%20flood%20relief%20130705-Z-OQ455-003.jpg",
+    "bytes": 727900
+  },
+  "oren_field": {
+    "file": "assets/img/oren_field.jpg",
+    "title": "Пшеничное поле - panoramio",
+    "author": "Iohann",
+    "license": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File%3A%D0%9F%D1%88%D0%B5%D0%BD%D0%B8%D1%87%D0%BD%D0%BE%D0%B5%20%D0%BF%D0%BE%D0%BB%D0%B5%20-%20panoramio.jpg",
+    "bytes": 494120
+  },
+  "dust": {
+    "file": "assets/img/dust.jpg",
+    "title": "Sandstorm in Al Asad, Iraq",
+    "author": "Arya Barznji M. Baghdad, Iraqi National Republian Guard Corps.",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File%3ASandstorm%20in%20Al%20Asad%2C%20Iraq.jpg",
+    "bytes": 407549
+  },
+  "salt_lake": {
+    "file": "assets/img/salt_lake.jpg",
+    "title": "Вид от Пригородного на Шалкар-Ега-Кара - panoramio",
+    "author": "Сергей Метик",
+    "license": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File%3A%D0%92%D0%B8%D0%B4%20%D0%BE%D1%82%20%D0%9F%D1%80%D0%B8%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%D0%BD%D0%BE%D0%B3%D0%BE%20%D0%BD%D0%B0%20%D0%A8%D0%B0%D0%BB%D0%BA%D0%B0%D1%80-%D0%95%D0%B3%D0%B0-%D0%9A%D0%B0%D1%80%D0%B0%20-%20panoramio.jpg",
+    "bytes": 523525
+  },
+  "rescue": {
+    "file": "assets/img/rescue.jpg",
+    "title": "Спасатели МЧС России в Турции",
+    "author": "Владимир Веленгурин",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File%3A%D0%A1%D0%BF%D0%B0%D1%81%D0%B0%D1%82%D0%B5%D0%BB%D0%B8%20%D0%9C%D0%A7%D0%A1%20%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D0%B8%20%D0%B2%20%D0%A2%D1%83%D1%80%D1%86%D0%B8%D0%B8.jpg",
+    "bytes": 493573
+  },
+  "earthquake3": {
+    "file": "assets/img/earthquake3.jpg",
+    "title": "Ofunato, Japan-2011-01",
+    "author": "DVIDSHUB",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File%3AOfunato%2C%20Japan-2011-01.jpg",
+    "bytes": 659704
+  },
+  "volcano_ru": {
+    "file": "assets/img/volcano_ru.jpg",
+    "title": "Klyuchevskaya Sopka eruption 1994",
+    "author": "NASA",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File%3AKlyuchevskaya%20Sopka%20eruption%201994.jpg",
+    "bytes": 99282
+  },
+  "baikal": {
+    "file": "assets/img/baikal.jpg",
+    "title": "Panorama of lake Baikal",
+    "author": "Sergey Pesterev",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File%3APanorama%20of%20lake%20Baikal.jpg",
+    "bytes": 609195
+  },
+  "elbrus": {
+    "file": "assets/img/elbrus.jpg",
+    "title": "Elbrus 2008",
+    "author": "derivative work: Crapload Mount Elbrus May 2008.jpg: JukoFF",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File%3AElbrus%202008.jpg",
+    "bytes": 235598
+  },
+  "oren_bridge": {
+    "file": "assets/img/oren_bridge.jpg",
+    "title": "UralQuayOrenburg",
+    "author": "Vladdie Litvinov",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File%3AUralQuayOrenburg.jpg",
+    "bytes": 519937
+  },
+  "snow_ru": {
+    "file": "assets/img/snow_ru.jpg",
+    "title": "Abnormal snowfall. 1 April 2014. - Аномальный апрельский снегопад. 1 Апреля 2014. - panoramio",
+    "author": "Lyseria",
+    "license": "CC BY 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File%3AAbnormal%20snowfall.%201%20April%202014.%20-%20%D0%90%D0%BD%D0%BE%D0%BC%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D0%B0%D0%BF%D1%80%D0%B5%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%B9%20%D1%81%D0%BD%D0%B5%D0%B3%D0%BE%D0%BF%D0%B0%D0%B4.%201%20%D0%90%D0%BF%D1%80%D0%B5%D0%BB%D1%8F%202014.%20-%20panoramio.jpg",
+    "bytes": 201651
+  }
+}
