@@ -1107,7 +1107,257 @@ td { color: var(--text-dim); }
 }
 .slide.is-active .risk-bar i { width: var(--lvl, 60%); }
 
-/* ---------- 14. Reveal-on-enter ---------- */
+/* ============================================================
+   15. 3D-ЗЕМЛЯ И ПАНЕЛЬ УПРАВЛЕНИЯ
+   ============================================================ */
+
+.slide.globe-slide { inset: 62px 20px 64px; }
+.slide.globe-slide .slide-inner { padding: 0; overflow: hidden; }
+
+.globe-wrap {
+  position: relative;
+  height: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 268px;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 14px;
+}
+.globe-main { position: relative; grid-column: 1; grid-row: 1; }
+
+#globeStage {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--stroke);
+  background: radial-gradient(circle at 50% 45%, #0a1230, #03060f 70%);
+  box-shadow: var(--shadow);
+}
+#globeStage canvas { display: block; width: 100%; height: 100%; }
+
+.globe-side {
+  grid-column: 2; grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+.globe-bottom {
+  grid-column: 1 / 3; grid-row: 2;
+  border-radius: var(--radius);
+  border: 1px solid var(--stroke);
+  background: linear-gradient(180deg, #0c1327, #070b18);
+  padding: 11px 15px;
+  box-shadow: var(--shadow);
+}
+
+/* заголовок поверх карты */
+.globe-title {
+  position: absolute;
+  left: 14px; top: 12px;
+  z-index: 5;
+  padding: 7px 14px;
+  border-radius: 11px;
+  background: rgba(4, 6, 13, .72);
+  border: 1px solid var(--stroke);
+  backdrop-filter: blur(9px);
+}
+.globe-title b { font-size: 14px; font-weight: 900; letter-spacing: -.01em; }
+.globe-title span { display: block; font-size: 10.5px; font-weight: 700; color: var(--text-mute); }
+
+.gb-panel {
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--stroke);
+  background: var(--surface);
+  padding: 11px 13px;
+}
+.gb-panel h4 {
+  font-size: 10.5px;
+  font-weight: 900;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  margin-bottom: 8px;
+}
+
+.mode-row { display: flex; gap: 6px; flex-wrap: wrap; }
+.mode-btn {
+  flex: 1 1 auto;
+  padding: 7px 9px;
+  border-radius: 9px;
+  border: 1px solid var(--stroke);
+  background: var(--surface-2);
+  color: var(--text-dim);
+  font: inherit;
+  font-size: 11.5px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all .22s var(--ease);
+  white-space: nowrap;
+}
+.mode-btn:hover { color: var(--text); border-color: var(--stroke-strong); }
+.mode-btn.is-on {
+  background: var(--grad-main); color: #04060d; border-color: transparent;
+  box-shadow: 0 6px 18px -8px rgba(34,211,238,.9);
+}
+
+select.gb-input, input.gb-input {
+  width: 100%;
+  padding: 7px 9px;
+  border-radius: 9px;
+  border: 1px solid var(--stroke);
+  background: rgba(4,6,13,.6);
+  color: var(--text);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  outline: none;
+}
+select.gb-input:focus, input.gb-input:focus { border-color: var(--cyan); }
+option { background: #0b1120; }
+
+.gb-slider { width: 100%; accent-color: #22d3ee; cursor: pointer; }
+.gb-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 7px; }
+.gb-row label { font-size: 11.5px; font-weight: 800; color: var(--text-dim); }
+.gb-val { font-size: 11.5px; font-weight: 900; color: var(--cyan); }
+
+.gb-check { display: flex; align-items: center; gap: 7px; font-size: 11.5px; font-weight: 700; color: var(--text-dim); cursor: pointer; margin-top: 6px; }
+.gb-check input { accent-color: #22d3ee; width: 14px; height: 14px; cursor: pointer; }
+
+.haz-list { display: flex; flex-direction: column; gap: 5px; max-height: 260px; overflow-y: auto; }
+.haz-row {
+  display: flex; align-items: center; gap: 8px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: rgba(255,255,255,.035);
+  cursor: pointer;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--text-dim);
+  transition: all .2s var(--ease);
+  text-align: left;
+  width: 100%;
+}
+.haz-row:hover { background: var(--surface-2); color: var(--text); border-color: var(--stroke-strong); transform: translateX(-3px); }
+.haz-dot { width: 8px; height: 8px; border-radius: 50%; flex: 0 0 auto; }
+.haz-yr { font-size: 10px; color: var(--text-mute); font-weight: 900; margin-left: auto; flex: 0 0 auto; }
+
+.gb-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.gb-stat {
+  border-radius: 10px;
+  border: 1px solid var(--stroke);
+  background: rgba(255,255,255,.04);
+  padding: 7px 10px;
+}
+.gb-stat .n { font-size: 17px; font-weight: 900; letter-spacing: -.02em; }
+.gb-stat .c { font-size: 9.5px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--text-mute); }
+
+.timeline-row { display: flex; align-items: center; gap: 11px; margin-top: 9px; }
+.gb-btn {
+  padding: 7px 13px;
+  border-radius: 10px;
+  border: 1px solid var(--stroke);
+  background: var(--surface-2);
+  color: var(--text-dim);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all .22s var(--ease);
+}
+.gb-btn:hover { color: var(--text); border-color: var(--stroke-strong); transform: translateY(-1px); }
+.gb-btn.is-on { background: var(--grad-main); color: #04060d; border-color: transparent; }
+.gb-btn.primary { background: rgba(34,211,238,.16); border-color: rgba(34,211,238,.4); color: #a5f3fc; }
+
+#timeLabel {
+  font-size: 13px;
+  font-weight: 900;
+  min-width: 168px;
+  text-align: center;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+.globe-status {
+  position: absolute;
+  left: 14px; bottom: 12px;
+  z-index: 5;
+  padding: 6px 12px;
+  border-radius: 9px;
+  background: rgba(4,6,13,.76);
+  border: 1px solid var(--stroke);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-mute);
+  backdrop-filter: blur(8px);
+}
+
+.globe-hint {
+  position: absolute;
+  right: 14px; top: 12px;
+  z-index: 5;
+  padding: 6px 12px;
+  border-radius: 9px;
+  background: rgba(4,6,13,.7);
+  border: 1px solid var(--stroke);
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--text-mute);
+  backdrop-filter: blur(8px);
+}
+
+.legend { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 8px; }
+.legend span { display: inline-flex; align-items: center; gap: 5px; font-size: 10.5px; font-weight: 800; color: var(--text-mute); }
+.legend i { width: 8px; height: 8px; border-radius: 50%; display: block; }
+
+/* инфо-панель маркера */
+#infoBox {
+  position: absolute;
+  right: 14px; bottom: 14px;
+  z-index: 10;
+  width: min(330px, 62%);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--stroke-strong);
+  background: rgba(8,12,24,.94);
+  backdrop-filter: blur(16px);
+  box-shadow: var(--shadow);
+  padding: 13px 15px;
+  display: none;
+}
+#infoBox.is-on { display: block; animation: rvIn .4s var(--ease) both; }
+#infoBox h3 { font-size: 15px; line-height: 1.25; }
+#infoBox .sub { font-size: 11.5px; color: var(--cyan); font-weight: 800; margin: 2px 0 7px; }
+#infoBox .body { font-size: 12.5px; color: var(--text-dim); line-height: 1.55; }
+#infoClose {
+  position: absolute; top: 9px; right: 9px;
+  width: 24px; height: 24px;
+  border-radius: 7px;
+  border: 1px solid var(--stroke);
+  background: var(--surface-2);
+  color: var(--text-dim);
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 1;
+}
+#infoClose:hover { color: var(--text); }
+
+@media (max-width: 1100px) {
+  .globe-wrap { grid-template-columns: 1fr; grid-template-rows: minmax(0, 1fr) auto auto; }
+  .globe-main { grid-column: 1; grid-row: 1; }
+  .globe-bottom { grid-row: 3; }
+  .globe-side { grid-column: 1; grid-row: 2; max-height: 190px; }
+}
+@media (max-width: 760px) {
+  .slide.globe-slide { inset: 70px 12px 62px; }
+  .gb-stats { grid-template-columns: repeat(2, 1fr); }
+  .timeline-row { flex-wrap: wrap; }
+  #infoBox { width: calc(100% - 28px); }
+}
+
+/* ---------- 16. Reveal-on-enter ---------- */
 .rv { opacity: 0; transform: translateY(22px); }
 .slide.is-active .rv {
   animation: rvIn .65s var(--ease) forwards;

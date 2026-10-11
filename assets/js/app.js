@@ -66,6 +66,16 @@
     to.classList.add('is-active');
     idx = n;
     paint();
+
+    /* 3D-карта: создаём при первом показе, останавливаем рендер вне слайда */
+    if (window.globeAPI) {
+      if (to.classList.contains('globe-slide')) {
+        window.globeAPI.ensure();
+        window.globeAPI.active(true);
+      } else if (from.classList.contains('globe-slide')) {
+        window.globeAPI.active(false);
+      }
+    }
   }
 
   function next() { if (idx < TOTAL - 1) go(idx + 1); }

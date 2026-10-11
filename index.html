@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
@@ -46,7 +46,7 @@
   <button class="nav-btn" id="btnPrev" title="Назад (←)">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18 9 12l6-6"/></svg><span class="lbl">Назад</span>
   </button>
-  <div class="counter"><b id="curNum">1</b> / <span id="totNum">24</span></div>
+  <div class="counter"><b id="curNum">1</b> / <span id="totNum">25</span></div>
   <button class="nav-btn primary" id="btnNext" title="Вперёд (→ или Пробел)">
     <span class="lbl">Далее</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
   </button>
@@ -90,6 +90,7 @@
           </p>
           <div class="hero-tags">
             <span class="chip">🌍 9 видов разбираем</span>
+            <span class="chip">🌐 3D-карта ЧС</span>
             <span class="chip">🇷🇺 Россия и Оренбуржье</span>
             <span class="chip">🛡️ Правила защиты</span>
             <span class="chip">🧠 Мини-тест</span>
@@ -97,7 +98,7 @@
           <div class="title-meta">
             <div><span class="k">Дисциплина</span><span class="v">ОБЗР</span></div>
             <div><span class="k">Класс</span><span class="v">9–11</span></div>
-            <div><span class="k">Слайдов</span><span class="v">24</span></div>
+            <div><span class="k">Слайдов</span><span class="v">25</span></div>
             <div><span class="k">Управление</span><span class="v">→ Space · F · O</span></div>
           </div>
         </div>
@@ -350,7 +351,125 @@
   </div>
 </section>
 
-<!-- ============ 5. ЗЕМЛЕТРЯСЕНИЕ ============ -->
+<!-- ============ 5. 3D-ЗЕМЛЯ ============ -->
+<section class="slide globe-slide" data-title="3D-карта ЧС в реальном времени">
+  <div class="slide-inner">
+    <div class="globe-wrap">
+
+      <div class="globe-main">
+        <div id="globeStage"></div>
+        <div class="globe-title">
+          <b>🌐 3D-карта ЧС</b>
+          <span>данные USGS · 1950–2026 · можно ставить любую дату</span>
+        </div>
+        <div class="globe-status" id="globeStatus">Загружаю 3D-карту…</div>
+        <div class="globe-hint">🖱 Тяни — вращать · колесо — приблизить · клик по точке — инфо</div>
+
+        <div id="infoBox">
+          <button id="infoClose" aria-label="Закрыть">✕</button>
+          <h3 id="infoTitle"></h3>
+          <div class="sub" id="infoSub"></div>
+          <div class="body" id="infoBody"></div>
+        </div>
+      </div>
+
+      <aside class="globe-side">
+        <div class="gb-panel">
+          <h4>Источник данных</h4>
+          <div class="mode-row" id="globeMode">
+            <button class="mode-btn is-on" data-mode="archive">Архив</button>
+            <button class="mode-btn" data-region="world" data-mode="archive">Мир</button>
+            <button class="mode-btn" data-region="russia" data-mode="archive">Россия</button>
+            <button class="mode-btn" data-region="orenburg" data-mode="archive">Оренбуржье</button>
+            <button class="mode-btn" data-mode="live">🔴 Эфир</button>
+          </div>
+          <div style="margin-top:9px">
+            <select class="gb-input" id="regionSel">
+              <option value="world">Весь мир</option>
+              <option value="russia">Россия (M ≥ 3.5)</option>
+              <option value="orenburg">Оренбургская область (M ≥ 2)</option>
+            </select>
+          </div>
+          <div class="gb-row">
+            <label for="magRange">Магнитуда от</label>
+            <span class="gb-val" id="magLabel">M ≥ 2.5</span>
+          </div>
+          <input type="range" class="gb-slider" id="magRange" min="2.5" max="8" step="0.5" value="2.5">
+          <label class="gb-check"><input type="checkbox" id="hazToggle" checked> Катастрофы (цунами, вулканы, циклоны)</label>
+          <label class="gb-check"><input type="checkbox" id="trailToggle" checked> След последних событий</label>
+          <button class="gb-btn" id="rotateBtn" style="width:100%;margin-top:8px">⟳ Автовращение</button>
+        </div>
+
+        <div class="gb-panel">
+          <h4>Легенда</h4>
+          <div class="legend">
+            <span><i style="background:#4dd9ff"></i>M 2.5–4</span>
+            <span><i style="background:#59ff9e"></i>M 4–5.5</span>
+            <span><i style="background:#ffdb40"></i>M 5.5–6.5</span>
+            <span><i style="background:#ff8c33"></i>M 6.5–7.5</span>
+            <span><i style="background:#ff3859"></i>M 7.5+</span>
+          </div>
+          <div class="legend" style="margin-top:6px">
+            <span><i style="background:#40ccff"></i>цунами</span>
+            <span><i style="background:#ff7320"></i>вулкан</span>
+            <span><i style="background:#9e8cff"></i>циклон</span>
+            <span><i style="background:#f2f299"></i>метеорит</span>
+          </div>
+        </div>
+
+        <div class="gb-panel">
+          <h4>Легендарные катастрофы</h4>
+          <div class="haz-list" id="hazList">
+            <button class="haz-row" data-id="indonesia2004"><i class="haz-dot" style="background:#40ccff"></i>Цунами, Индонезия<span class="haz-yr">2004</span></button>
+            <button class="haz-row" data-id="japan2011"><i class="haz-dot" style="background:#40ccff"></i>Цунами, Япония<span class="haz-yr">2011</span></button>
+            <button class="haz-row" data-id="kamchatka1952"><i class="haz-dot" style="background:#40ccff"></i>Цунами, Камчатка<span class="haz-yr">1952</span></button>
+            <button class="haz-row" data-id="kamchatka2024"><i class="haz-dot" style="background:#40ccff"></i>Цунами, Камчатка<span class="haz-yr">2024</span></button>
+            <button class="haz-row" data-id="chile1960"><i class="haz-dot" style="background:#40ccff"></i>Землетрясение, Чили<span class="haz-yr">1960</span></button>
+            <button class="haz-row" data-id="lisbon1755"><i class="haz-dot" style="background:#40ccff"></i>Цунами, Лиссабон<span class="haz-yr">1755</span></button>
+            <button class="haz-row" data-id="tonga2022"><i class="haz-dot" style="background:#ff7320"></i>Вулкан Тонга<span class="haz-yr">2022</span></button>
+            <button class="haz-row" data-id="pinatubo1991"><i class="haz-dot" style="background:#ff7320"></i>Вулкан Пинатубо<span class="haz-yr">1991</span></button>
+            <button class="haz-row" data-id="eyjafjallajokull2010"><i class="haz-dot" style="background:#ff7320"></i>Вулкан в Исландии<span class="haz-yr">2010</span></button>
+            <button class="haz-row" data-id="krakatau1883"><i class="haz-dot" style="background:#ff7320"></i>Вулкан Кракатау<span class="haz-yr">1883</span></button>
+            <button class="haz-row" data-id="chelyabinsk2013"><i class="haz-dot" style="background:#f2f299"></i>Челябинский метеорит<span class="haz-yr">2013</span></button>
+            <button class="haz-row" data-id="tunguska1908"><i class="haz-dot" style="background:#f2f299"></i>Тунгусский метеорит<span class="haz-yr">1908</span></button>
+            <button class="haz-row" data-id="bhola1970"><i class="haz-dot" style="background:#9e8cff"></i>Циклон Бола<span class="haz-yr">1970</span></button>
+            <button class="haz-row" data-id="katrina2005"><i class="haz-dot" style="background:#9e8cff"></i>Ураган Катрина<span class="haz-yr">2005</span></button>
+            <button class="haz-row" data-id="haiyan2013"><i class="haz-dot" style="background:#9e8cff"></i>Тайфун Хайкан<span class="haz-yr">2013</span></button>
+            <button class="haz-row" data-id="dorian2019"><i class="haz-dot" style="background:#9e8cff"></i>Ураган Дориан<span class="haz-yr">2019</span></button>
+            <button class="haz-row" data-id="denali1962"><i class="haz-dot" style="background:#cceaff"></i>Лавина Денали<span class="haz-yr">1962</span></button>
+          </div>
+        </div>
+      </aside>
+
+      <div class="globe-bottom">
+        <div class="gb-stats">
+          <div class="gb-stat"><div class="n" id="stCount">—</div><div class="c">событий на карте</div></div>
+          <div class="gb-stat"><div class="n" id="stMax">—</div><div class="c">макс. магнитуда</div></div>
+          <div class="gb-stat"><div class="n" id="stDate" style="font-size:13px">—</div><div class="c">дата на курсоре</div></div>
+          <div class="gb-stat"><div class="n" id="stWhere" style="font-size:12px">—</div><div class="c">сильнейшее событие</div></div>
+        </div>
+
+        <div class="timeline-row">
+          <button class="gb-btn primary" id="playBtn">▶ Играть</button>
+          <input type="range" class="gb-slider" id="timeRange" min="0" max="1" value="0" style="flex:1">
+          <span id="timeLabel">—</span>
+        </div>
+
+        <div class="timeline-row">
+          <input type="date" class="gb-input" id="dateInput" style="width:158px">
+          <button class="gb-btn" id="goDate">📅 Показать эту дату</button>
+          <div style="flex:1"></div>
+          <span class="small">Скорость</span>
+          <input type="range" class="gb-slider" id="speedRange" min="1" max="120" value="30" style="width:120px">
+          <span class="gb-val" id="speedLabel">30×</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. ЗЕМЛЕТРЯСЕНИЕ ============ -->
 <section class="slide" data-title="Землетрясение">
   <div class="slide-inner">
     <div class="section-head">
@@ -1770,5 +1889,6 @@
 </main>
 
 <script src="assets/js/app.js"></script>
+<script type="module" src="assets/js/globe.js"></script>
 </body>
 </html>
